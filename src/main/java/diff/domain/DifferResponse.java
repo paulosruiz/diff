@@ -9,7 +9,7 @@ public class DifferResponse {
 	private Boolean equals = false;
 	private Boolean sameSize = false;
 	private List<Offset> offsets;
-	private DifferResponseStatus status;
+	private String status;
 
 	/**
 	 * @return the id
@@ -96,14 +96,14 @@ public class DifferResponse {
 	/**
 	 * @return the status
 	 */
-	public DifferResponseStatus getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
 	/**
 	 * @param status the status to set
 	 */
-	public void setStatus(DifferResponseStatus status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 }

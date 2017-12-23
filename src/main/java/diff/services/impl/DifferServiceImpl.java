@@ -133,14 +133,14 @@ public class DifferServiceImpl implements DifferService {
 		LOG.info("Starting validateToCompare");
 		boolean isValid = true;
 		if (differToCompare == null) {
-			response.setStatus(DifferResponseStatus.NOT_FOUND);
+			response.setStatus(DifferResponseStatus.NOT_FOUND.value());
 			isValid = false;
 		} else {
 			if (!validateToCompareRight(differToCompare)) {
-				response.setStatus(DifferResponseStatus.MISSING_RIGHT);
+				response.setStatus(DifferResponseStatus.MISSING_RIGHT.value());
 				isValid = false;
 			} else if (!validateToCompareLeft(differToCompare)) {
-				response.setStatus(DifferResponseStatus.MISSING_LEFT);
+				response.setStatus(DifferResponseStatus.MISSING_LEFT.value());
 				isValid = false;
 			}
 		}
@@ -172,7 +172,7 @@ public class DifferServiceImpl implements DifferService {
 					
 					response.setEquals(false);
 					response.setSameSize(false);
-					response.setStatus(DifferResponseStatus.SIZE_MISMATCH);
+					response.setStatus(DifferResponseStatus.SIZE_MISMATCH.value());
 				} else {
 					// Same size = true
 					response.setSameSize(true);
@@ -184,12 +184,12 @@ public class DifferServiceImpl implements DifferService {
 					
 						// // Equals = true
 						response.setEquals(true);
-						response.setStatus(DifferResponseStatus.EQUALS);
+						response.setStatus(DifferResponseStatus.EQUALS.value());
 					} else {
 						// Size are equals but the contents are different
 						LOG.debug("Contents are NOT the same");
 						response.setEquals(false);
-						response.setStatus(DifferResponseStatus.CONTENT_MISMATCH);
+						response.setStatus(DifferResponseStatus.CONTENT_MISMATCH.value());
 					
 						// verify the differences
 						List<Offset> offsets = checkOffsets(leftDecoded, rightDecode);

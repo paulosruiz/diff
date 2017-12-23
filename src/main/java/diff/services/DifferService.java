@@ -24,7 +24,7 @@ public interface DifferService {
 	 * @param side
 	 * @return
 	 */
-	public DifferObject defineData(final Long id, final String left, final DifferSide side);
+	public DifferObject defineData(final Long id, final String data, final DifferSide side);
 
 	/**
 	 * Compare DifferObject values
