@@ -30,29 +30,43 @@ public class DifferObject {
 	public String toString() {
 		return "DifferObject [id=" + id + ", left=" + left + ", right=" + right + "]";
 	}
-
-	public Long getId() {
+	/**
+	 * @return the id
+	 */
+	public final Long getId() {
 		return id;
 	}
-
-	public String getLeft() {
+	/**
+	 * @return the left
+	 */
+	public final String getLeft() {
 		return left;
 	}
-
-	public String getRight() {
+	/**
+	 * @return the right
+	 */
+	public final String getRight() {
 		return right;
 	}
-
-	public void setId(Long id) {
+	/**
+	 * @param id the id to set
+	 */
+	public final void setId(Long id) {
 		this.id = id;
 	}
-
-	public void setLeft(String left) {
+	/**
+	 * @param left the left to set
+	 */
+	public final void setLeft(String left) {
 		this.left = left;
 	}
-
-	public void setRight(String right) {
+	/**
+	 * @param right the right to set
+	 */
+	public final void setRight(String right) {
 		this.right = right;
 	}
+
+	
 
 }

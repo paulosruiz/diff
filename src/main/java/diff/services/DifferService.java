@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import diff.domain.DifferObject;
-import diff.util.DiffSide;
+import diff.domain.DifferResponse;
+import diff.util.DifferSide;
 
 /**
  * Differ service interface
@@ -16,9 +17,9 @@ import diff.util.DiffSide;
 @Service
 public interface DifferService {
 
-	public DifferObject defineData(Long id, String left, DiffSide side);
+	public DifferObject defineData(final Long id, final String left, final DifferSide side);
 
-	public DifferObject getDiff(Long id);
+	public DifferResponse compare(final Long id) throws Exception;
 
 	public List<DifferObject> retrieveAll();
 
