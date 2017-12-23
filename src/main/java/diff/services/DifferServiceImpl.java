@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import diff.domain.DifferObject;
 import diff.repositories.DifferRepository;
+import diff.util.DiffSide;
 
 @Service
 public class DifferServiceImpl implements DifferService {
@@ -51,20 +52,31 @@ public class DifferServiceImpl implements DifferService {
 	}
 
 	@Override
-	public DifferObject setLeftDiff(final Long id, final String left) {
+	public DifferObject defineData(final Long id, final String data, final DiffSide side) {
 		/*
 		 * if (id != null && !id.isEmpty()) { return
 		 * repository.findByIdAndAdminAndAdminOnly(id, null, false); }
 		 */
 		LOG.info("setLeftDiff method started");
-		if (id != null) {
-			repository.findOne(id);
+		DifferObject differ = null;
+		if (id != null && data != null && side != null) {
+			differ = repository.findOne(id);
+			if (differ == null) {
+				differ = this.createDiffer(id);
+			}
+			if (side.equals(DiffSide.LEFT)) {
+				differ.setLeft(data);
+			} else {
+				differ.setRight(data);
+			}
+			repository.save(differ);
 		}
-		return null;
+
+		return differ;
 	}
 
 	@Override
-	public DifferObject setRightDiff(Long id, String right) {
+	public DifferObject defineRightData(Long id, String right) {
 		/*
 		 * if (id != null && !id.isEmpty()) { return
 		 * repository.findByIdAndAdminAndAdminOnly(id, null, false); }
@@ -72,11 +84,17 @@ public class DifferServiceImpl implements DifferService {
 		// return repository.findByIdAndAdminAndAdminOnly(id, admin, true);
 
 		LOG.info("setRightDiff method started");
+		DifferObject differ = null;
 		if (id != null) {
-			repository.findOne(id);
+			differ = repository.findOne(id);
+			if (differ == null) {
+				differ = this.createDiffer(id);
+			}
+			differ.setRight(right);
+			repository.save(differ);
 		}
 		// TODO Auto-generated method stub
-		return null;
+		return differ;
 	}
 
 	@Override
@@ -88,14 +106,14 @@ public class DifferServiceImpl implements DifferService {
 			final byte[] leftDecoded = Base64.getDecoder().decode(differToCompare.getLeft());
 
 			final byte[] rightDecode = Base64.getDecoder().decode(differToCompare.getRight());
-			
+
 			LOG.trace("Starting comparing");
 			LOG.debug("Comparing: " + differToCompare.toString());
-			//TODO tratar sem left ou right
-			if(leftDecoded.length != rightDecode.length) {
-				
-			}else {
-				
+			// TODO tratar sem left ou right
+			if (leftDecoded.length != rightDecode.length) {
+
+			} else {
+
 			}
 		}
 		// TODO Auto-generated method stub

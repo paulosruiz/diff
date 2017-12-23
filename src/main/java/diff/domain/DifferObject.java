@@ -14,13 +14,16 @@ public class DifferObject {
 	@Column(name = "ID")
 	private Long id;
 
+	public DifferObject() {
+		
+	}
 	public DifferObject(Long id) {
 		this.id = id;
 	}
 
 	@Column(name = "LEFT")
 	private String left;
-	
+
 	@Column(name = "RIGHT")
 	private String right;
 

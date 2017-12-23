@@ -1,7 +1,9 @@
 package diff.services;
 
 import org.springframework.stereotype.Service;
+
 import diff.domain.DifferObject;
+import diff.util.DiffSide;
 
 /**
  * Differ service interface
@@ -12,9 +14,9 @@ import diff.domain.DifferObject;
 @Service
 public interface DifferService {
 
-	public DifferObject setLeftDiff(Long id, String left);
+	public DifferObject defineData(Long id, String left,DiffSide side);
 
-	public DifferObject setRightDiff(Long id, String right);
+	public DifferObject defineRightData(Long id, String right);
 
 	public DifferObject getDiff(Long id);
 
