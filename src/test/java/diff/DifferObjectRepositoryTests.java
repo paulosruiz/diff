@@ -10,7 +10,7 @@ import diff.repositories.DifferRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ToogleRepositoryTests {
+public class DifferObjectRepositoryTests {
 
 	@Autowired
 	DifferRepository repository;
