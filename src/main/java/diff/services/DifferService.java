@@ -19,6 +19,7 @@ public interface DifferService {
 
 	/**
 	 * Set data on DifferSide position
+	 * 
 	 * @param id
 	 * @param left
 	 * @param side
@@ -28,6 +29,7 @@ public interface DifferService {
 
 	/**
 	 * Compare DifferObject values
+	 * 
 	 * @param id
 	 * @return
 	 * @throws Exception
@@ -36,8 +38,16 @@ public interface DifferService {
 
 	/**
 	 * Retrieve all DifferObjects
+	 * 
 	 * @return
 	 */
 	public List<DifferObject> retrieveAll();
 
+	/**
+	 * Delete DifferObject
+	 * 
+	 * @param id
+	 * 
+	 *            public void delete(final Long id);
+	 */
 }

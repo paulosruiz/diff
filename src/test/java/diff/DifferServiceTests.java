@@ -4,10 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
 
-import java.util.Base64;
-
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,36 +14,252 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import diff.domain.DifferObject;
 import diff.domain.DifferResponse;
+import diff.repositories.DifferRepository;
 import diff.services.DifferService;
+import diff.util.DifferResponseStatus;
 import diff.util.DifferSide;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+/**
+ * Differ Service test class
+ * 
+ * @author paulo.almeida.junior
+ *
+ */
 public class DifferServiceTests {
 
 	@Autowired
-	DifferService service;
+	private DifferService service;
+
+	@Autowired
+	private DifferRepository repository;
 
 	@Autowired
 	private MockMvc mockMvc;
 
+	final Long testId = new Long(99);
+
+	@After
+	public void UndoSetUp() {
+		try {
+			repository.delete(testId);
+		} catch (Exception e) {
+
+		}
+
+	}
+
 	@Test
-	public void sameSizeIsEquals() {
-		String leftData = "QUFBQkJC"; // AAAAAA
+	public void notFound() {
+
+		try {
+			DifferResponse response = service.compare(testId);
+			assertFalse("Same size", response.getSameSize());
+			assertFalse("Equals", response.getEquals());
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.NOT_FOUND.value());
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void missingLeft() {
 		String rightData = "QUFBQkJC"; // AAAAAA
-		Long id = new Long(01);
-		service.defineData(id, leftData, DifferSide.LEFT);
-		service.defineData(id, rightData, DifferSide.RIGHT);
+		try {
+			service.defineData(testId, rightData, DifferSide.RIGHT);
+			DifferResponse response = service.compare(testId);
+			assertFalse("Same size", response.getSameSize());
+			assertFalse("Equals", response.getEquals());
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.MISSING_LEFT.value());
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void missingRight() {
+		String leftData = "QUFBQkJC"; // AAAAAA
+		try {
+			service.defineData(testId, leftData, DifferSide.LEFT);
+			DifferResponse response = service.compare(testId);
+			assertFalse("Same size", response.getSameSize());
+			assertFalse("Equals", response.getEquals());
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.MISSING_RIGHT.value());
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void notSameSize() {
+		String leftData = "QUFBQkJCYWFhYWFhYWFhYWE="; // AAABBBaaaaaaaaaaa
+		String rightData = "QUFBQkJC"; // AAAAAA
+
+		service.defineData(testId, leftData, DifferSide.LEFT);
+		service.defineData(testId, rightData, DifferSide.RIGHT);
 		DifferResponse response;
 		try {
-			response = service.compare(id);
+			response = service.compare(testId);
+			System.out.println(response);
+
+			assertFalse("Same size", response.getSameSize());
+			assertFalse("Equals", response.getEquals());
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.SIZE_MISMATCH.value());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void sameSizeAndEqual() {
+		String leftData = "QUFBQkJC"; // AAAAAA
+		String rightData = "QUFBQkJC"; // AAAAAA
+
+		service.defineData(testId, leftData, DifferSide.LEFT);
+		service.defineData(testId, rightData, DifferSide.RIGHT);
+		DifferResponse response;
+		try {
+			response = service.compare(testId);
 			System.out.println(response);
 			assertTrue("Same size", response.getSameSize());
 			assertTrue("Equals", response.getEquals());
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.EQUALS.value());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
+	@Test
+	public void firstAndLastDifferences() {
+
+		String leftData = "QkFBQg=="; // BAAB
+		String rightData = "QUFBQQ=="; // AAAA
+
+		/*
+		 * byte[] leftDecodedBytes = leftData.getBytes(); byte[] rightDecodedBytes =
+		 * rightData.getBytes(); byte[] leftEncodedBytes =
+		 * Base64.getEncoder().encode(leftDecodedBytes); byte[] rightEncodedBytes =
+		 * Base64.getEncoder().encode(rightDecodedBytes);
+		 */
+
+		service.defineData(testId, leftData, DifferSide.LEFT);
+		service.defineData(testId, rightData, DifferSide.RIGHT);
+		try {
+			DifferResponse response = service.compare(testId);
+
+			assertTrue("Same size", response.getSameSize());
+
+			assertFalse("Not equals", response.getEquals());
+
+			assertNotNull("There are offsets", response.getOffsets());
+			assertThat(response.getOffsets()).hasSize(2);
+
+			//First offset
+			assertThat(response.getOffsets().get(0).getOffset()).isEqualTo(0);
+			assertThat(response.getOffsets().get(0).getLength()).isEqualTo(1);
+
+			//Last offset
+			assertThat(response.getOffsets().get(1).getOffset()).isEqualTo(3);
+			assertThat(response.getOffsets().get(1).getLength()).isEqualTo(1);
+			
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.CONTENT_MISMATCH.value());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void sufixDifference() {
+
+		String leftData = "QUJCQg=="; // ABBB
+		String rightData = "QUFBQQ=="; // AAAA
+
+		service.defineData(testId, leftData, DifferSide.LEFT);
+		service.defineData(testId, rightData, DifferSide.RIGHT);
+		try {
+			DifferResponse response = service.compare(testId);
+
+			assertTrue("Same size", response.getSameSize());
+
+			assertFalse("Not equals", response.getEquals());
+
+			assertNotNull("There are offsets", response.getOffsets());
+			assertThat(response.getOffsets()).hasSize(1);
+
+			// Test Offset
+			assertThat(response.getOffsets().get(0).getOffset()).isEqualTo(1);
+			assertThat(response.getOffsets().get(0).getLength()).isEqualTo(3);
+		
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.CONTENT_MISMATCH.value());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void reverseDifference() {
+
+		String leftData = "QUFCQg=="; // AABB
+		String rightData = "QkJBQQ=="; // BBAA
+
+		service.defineData(testId, leftData, DifferSide.LEFT);
+		service.defineData(testId, rightData, DifferSide.RIGHT);
+		try {
+			DifferResponse response = service.compare(testId);
+
+			assertTrue("Same size", response.getSameSize());
+
+			assertFalse("Not equals", response.getEquals());
+
+			assertNotNull("There are offsets", response.getOffsets());
+			assertThat(response.getOffsets()).hasSize(1);
+
+			// Test Offset
+			assertThat(response.getOffsets().get(0).getOffset()).isEqualTo(0);
+			assertThat(response.getOffsets().get(0).getLength()).isEqualTo(4);
+		
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.CONTENT_MISMATCH.value());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void middleDifference() {
+
+		String leftData = "QkFBQg=="; // BAAB
+		String rightData = "QkJCQg=="; // BBBB
+
+		service.defineData(testId, leftData, DifferSide.LEFT);
+		service.defineData(testId, rightData, DifferSide.RIGHT);
+		try {
+			DifferResponse response = service.compare(testId);
+
+			assertTrue("Same size", response.getSameSize());
+
+			assertFalse("Not equals", response.getEquals());
+
+			assertNotNull("There are offsets", response.getOffsets());
+			assertThat(response.getOffsets()).hasSize(1);
+			// Test Offset
+			assertThat(response.getOffsets().get(0).getOffset()).isEqualTo(1);
+			assertThat(response.getOffsets().get(0).getLength()).isEqualTo(2);
+		
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.CONTENT_MISMATCH.value());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,53 +268,36 @@ public class DifferServiceTests {
 
 	@Test
 	public void sameSizeNotEquals() {
-		
+
 		String leftData = "QUFBQUFB"; // AAAAAA
 		String rightData = "QUFBQkJC"; // AAABBB
-		Long id = new Long(01);
-		/*byte[] leftDecodedBytes = leftData.getBytes();
-		byte[] rightDecodedBytes = rightData.getBytes();
-		byte[] leftEncodedBytes = Base64.getEncoder().encode(leftDecodedBytes);
-		byte[] rightEncodedBytes = Base64.getEncoder().encode(rightDecodedBytes);
-*/
-		
-		service.defineData(id, leftData, DifferSide.LEFT);
-		service.defineData(id, rightData, DifferSide.RIGHT);
+
+		/*
+		 * byte[] leftDecodedBytes = leftData.getBytes(); byte[] rightDecodedBytes =
+		 * rightData.getBytes(); byte[] leftEncodedBytes =
+		 * Base64.getEncoder().encode(leftDecodedBytes); byte[] rightEncodedBytes =
+		 * Base64.getEncoder().encode(rightDecodedBytes);
+		 */
+
+		service.defineData(testId, leftData, DifferSide.LEFT);
+		service.defineData(testId, rightData, DifferSide.RIGHT);
 		try {
-			DifferResponse response = service.compare(id);
+			DifferResponse response = service.compare(testId);
 
 			assertTrue("Same size", response.getSameSize());
 
 			assertFalse("Not equals", response.getEquals());
 
 			assertNotNull("There are offsets", response.getOffsets());
-			assertThat(response.getOffsets()).hasSize(0);
+			assertThat(response.getOffsets()).hasSize(1);
+
 			assertThat(response.getOffsets().get(0).getLength()).isEqualTo(3);
 			assertThat(response.getOffsets().get(0).getOffset()).isEqualTo(3);
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.CONTENT_MISMATCH.value());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	/*
-	 * @Test public void createToogle() throws Exception {
-	 * this.mockMvc.perform(get("/toogle/createToogle").param("id",
-	 * "ToogleTestBlue").param("enable", "true"))
-	 * .andDo(print()).andExpect(status().isOk());
-	 * 
-	 * List<Toogle> toogleOne = repository.findById("ToogleTestBlue");
-	 * assertNotNull(toogleOne); repository.delete(toogleOne); }
-	 * 
-	 * @Test public void createToogleAdmin() throws Exception {
-	 * 
-	 * this.mockMvc.perform(get("/toogle/createToogleAdmin").param("id",
-	 * "ToogleTestRed").param("enable", "false") .param("admin",
-	 * "ABC")).andDo(print()).andExpect(status().isOk());
-	 * 
-	 * Toogle toogleTwo = repository.findByIdAndAdminAndAdminOnly("ToogleTestRed",
-	 * "ABC", true); assertNotNull(toogleTwo); repository.delete(toogleTwo);
-	 * 
-	 * }
-	 */
+
 }

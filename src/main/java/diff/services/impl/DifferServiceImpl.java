@@ -32,7 +32,7 @@ public class DifferServiceImpl implements DifferService {
 	private DifferRepository repository;
 
 	private DifferObject getDiffer(final Long id) {
-		LOG.info("getDiffer method started");
+		LOG.info("Starting getDiffer method");
 		DifferObject newDiff = null;
 		try {
 			if (id != null) {
@@ -48,7 +48,7 @@ public class DifferServiceImpl implements DifferService {
 	}
 
 	private DifferObject createDiffer(final Long id) {
-		LOG.info("createDiffer method started");
+		LOG.info("Starting createDiffer method");
 		DifferObject newDiff = null;
 		try {
 			if (id != null) {
@@ -66,11 +66,7 @@ public class DifferServiceImpl implements DifferService {
 
 	@Override
 	public DifferObject defineData(final Long id, final String data, final DifferSide side) {
-		/*
-		 * if (id != null && !id.isEmpty()) { return
-		 * repository.findByIdAndAdminAndAdminOnly(id, null, false); }
-		 */
-		LOG.info("defineData method started");
+		LOG.info("Starting defineData method");
 
 		DifferObject differ = null;
 		if (id != null && data != null && side != null) {
@@ -99,7 +95,7 @@ public class DifferServiceImpl implements DifferService {
 	 * @return
 	 */
 	private boolean validateToCompareRight(DifferObject diff) {
-		LOG.info("Starting validateToCompareRight");
+		LOG.info("Starting validateToCompareRight method");
 		if (diff != null) {
 			if (diff.getRight() != null && !diff.getRight().isEmpty()) {
 				return true;
@@ -115,7 +111,7 @@ public class DifferServiceImpl implements DifferService {
 	 * @return
 	 */
 	private boolean validateToCompareLeft(DifferObject diff) {
-		LOG.info("Starting validateToCompareLeft");
+		LOG.info("Starting validateToCompareLeft method");
 		if (diff != null) {
 			if (diff.getLeft() != null && !diff.getLeft().isEmpty()) {
 				return true;
@@ -132,7 +128,7 @@ public class DifferServiceImpl implements DifferService {
 	 * @return
 	 */
 	private boolean validateToCompare(DifferObject differToCompare, DifferResponse response) {
-		LOG.info("Starting validateToCompare");
+		LOG.info("Starting validateToCompare method");
 		boolean isValid = true;
 		if (differToCompare == null) {
 			response.setStatus(DifferResponseStatus.NOT_FOUND.value());
@@ -149,9 +145,15 @@ public class DifferServiceImpl implements DifferService {
 		return isValid;
 	}
 
-	@Override
+	/**
+	 * Compare the DifferObject by Id
+	 * 
+	 * @param id
+	 * @return
+	 * 
+	 */
 	public DifferResponse compare(Long id) throws Exception {
-		LOG.info("Starting comparing");
+		LOG.info("Starting comparing method");
 		LOG.info("ID: " + id);
 		DifferResponse response = new DifferResponse();
 		response.setId(id);
@@ -164,9 +166,8 @@ public class DifferServiceImpl implements DifferService {
 				final byte[] rightDecode = Base64.getDecoder().decode(differToCompare.getRight());
 
 				LOG.info("Comparing: " + differToCompare.toString());
-				LOG.info("Arrays Sizes");
-				LOG.info("Right: " + rightDecode.length);
-				LOG.info("Left: " + leftDecoded.length);
+				LOG.debug("Right Size: " + rightDecode.length);
+				LOG.debug("Left Size: " + leftDecoded.length);
 
 				// Check is size is the same
 				if (leftDecoded.length != rightDecode.length) {
@@ -183,11 +184,7 @@ public class DifferServiceImpl implements DifferService {
 					// Check if arrays are equals
 					if (Arrays.equals(leftDecoded, rightDecode)) {
 						response.setEquals(true);
-						
 						LOG.info("Contents are the same");
-						
-						// // Equals = true
-						
 						response.setStatus(DifferResponseStatus.EQUALS.value());
 					} else {
 						// Size are equals but the contents are different
@@ -210,19 +207,33 @@ public class DifferServiceImpl implements DifferService {
 	}
 
 	private List<Offset> checkOffsets(final byte[] leftDecoded, final byte[] rightDecode) {
-		LOG.info("Starting checkOffsets");
+		LOG.info("Starting checkOffsets method");
 		List<Offset> listOffsets = new ArrayList<Offset>();
 		int offset = -1;
-		int limit = 0;
-		for (int i = 0; i < leftDecoded.length; i++) {
+		int length = 0;
+		int i=0;
+		for ( i = 0; i < leftDecoded.length; i++) {
+			LOG.info("i:" + i);
 			if (offset == -1 && leftDecoded[i] != rightDecode[i]) {
 				offset = i;
+				LOG.info("offset:" + offset);
 			}
+			LOG.info("leftDecoded:" + Byte.toString(leftDecoded[i]));
+			LOG.info("rightDecode:" + Byte.toString(rightDecode[i]));
 			if (offset >= 0 && leftDecoded[i] == rightDecode[i]) {
-				limit = i - offset;
-				listOffsets.add(new Offset(offset, limit));
+				length = i - offset;
+				listOffsets.add(new Offset(offset, length));
+				LOG.info("Length:" + length);
+				offset = -1;
 			}
+
 		}
+		//In case of the final byte is different
+		if (offset >=0 && leftDecoded[i-1] != rightDecode[i-1]) {
+			length = i - offset;
+			listOffsets.add(new Offset(offset, length));
+		}
+
 		return listOffsets;
 	}
 
@@ -232,4 +243,13 @@ public class DifferServiceImpl implements DifferService {
 
 		return repository.findAll();
 	}
+
+	/*
+	 * @Override public void delete(Long id) { LOG.info("Starting delete method");
+	 * try { repository.delete(id); } catch (Exception e) {
+	 * 
+	 * }
+	 * 
+	 * }
+	 */
 }
