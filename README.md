@@ -1,3 +1,4 @@
 TODO Controller LOGS
 TODO SWAGGER
 TODO TESTS
+TODO Compare

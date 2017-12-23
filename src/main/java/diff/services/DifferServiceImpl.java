@@ -1,6 +1,7 @@
 package diff.services;
 
 import java.util.Base64;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class DifferServiceImpl implements DifferService {
 		DifferObject newDiff = null;
 		try {
 			if (id != null) {
-				newDiff = repository.findOne(id);
+				newDiff = this.getDiffer(id);
 				if (newDiff != null) {
 					LOG.info("Differ was found");
 				}
@@ -60,7 +61,7 @@ public class DifferServiceImpl implements DifferService {
 		LOG.info("setLeftDiff method started");
 		DifferObject differ = null;
 		if (id != null && data != null && side != null) {
-			differ = repository.findOne(id);
+			differ = this.getDiffer(id);
 			if (differ == null) {
 				differ = this.createDiffer(id);
 			}
@@ -75,26 +76,20 @@ public class DifferServiceImpl implements DifferService {
 		return differ;
 	}
 
-	@Override
-	public DifferObject defineRightData(Long id, String right) {
-		/*
-		 * if (id != null && !id.isEmpty()) { return
-		 * repository.findByIdAndAdminAndAdminOnly(id, null, false); }
-		 */
-		// return repository.findByIdAndAdminAndAdminOnly(id, admin, true);
-
-		LOG.info("setRightDiff method started");
-		DifferObject differ = null;
-		if (id != null) {
-			differ = repository.findOne(id);
-			if (differ == null) {
-				differ = this.createDiffer(id);
+	/**
+	 * Validate is the object is ready to be compared (if the Left and right exists)
+	 * 
+	 * @param diff
+	 * @return
+	 */
+	private boolean validateToCompare(DifferObject diff) {
+		if (diff != null) {
+			if (diff.getLeft() != null && diff.getRight() != null && !diff.getLeft().isEmpty()
+					&& !diff.getRight().isEmpty()) {
+				return true;
 			}
-			differ.setRight(right);
-			repository.save(differ);
 		}
-		// TODO Auto-generated method stub
-		return differ;
+		return false;
 	}
 
 	@Override
@@ -102,7 +97,7 @@ public class DifferServiceImpl implements DifferService {
 		LOG.info("getDiff method started");
 
 		DifferObject differToCompare = getDiff(id);
-		if (differToCompare != null) {
+		if (validateToCompare(differToCompare)) {
 			final byte[] leftDecoded = Base64.getDecoder().decode(differToCompare.getLeft());
 
 			final byte[] rightDecode = Base64.getDecoder().decode(differToCompare.getRight());
@@ -118,5 +113,12 @@ public class DifferServiceImpl implements DifferService {
 		}
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<DifferObject> retrieveAll() {
+		LOG.info("getAll method started");
+
+		return repository.findAll();
 	}
 }

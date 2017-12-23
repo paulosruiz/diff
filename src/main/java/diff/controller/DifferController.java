@@ -1,5 +1,7 @@
 package diff.controller;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,7 +40,7 @@ public class DifferController {
 	@PostMapping(value = "/{id}/right", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<DifferObject> right(@PathVariable("id") Long id, @RequestBody DiffBean encodedRight) {
 		LOG.debug("Starting right");
-		DifferObject newDiffer = differService.defineData(id, encodedRight.getData(),DiffSide.RIGHT);
+		DifferObject newDiffer = differService.defineData(id, encodedRight.getData(), DiffSide.RIGHT);
 		return new ResponseEntity<>(newDiffer, HttpStatus.CREATED);
 	}
 
@@ -47,6 +49,13 @@ public class DifferController {
 		LOG.info("Starting compare");
 		differService.getDiff(id);
 		return null;
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/retrieveAll")
+	public List<DifferObject> retrieveAll() {
+		LOG.info("Starting compare");
+		return differService.retrieveAll();
+
 	}
 
 }
