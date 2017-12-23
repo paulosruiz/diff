@@ -16,7 +16,11 @@ import diff.repositories.DifferRepository;
 import diff.services.DifferService;
 import diff.util.DifferResponseStatus;
 import diff.util.DifferSide;
-
+/**
+ * Differ Service methods implementation
+ * @author paulo.almeida.junior
+ *
+ */
 @Service
 public class DifferServiceImpl implements DifferService {
 

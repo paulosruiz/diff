@@ -12,20 +12,6 @@ public class DifferResponse {
 	private DifferResponseStatus status;
 
 	/**
-	 * @return the status
-	 */
-	public final DifferResponseStatus getStatus() {
-		return status;
-	}
-
-	/**
-	 * @param status the status to set
-	 */
-	public final void setStatus(DifferResponseStatus status) {
-		this.status = status;
-	}
-
-	/**
 	 * @return the id
 	 */
 	public final Long getId() {
@@ -105,5 +91,19 @@ public class DifferResponse {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return super.toString();
+	}
+
+	/**
+	 * @return the status
+	 */
+	public DifferResponseStatus getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(DifferResponseStatus status) {
+		this.status = status;
 	}
 }

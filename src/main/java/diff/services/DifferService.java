@@ -17,10 +17,27 @@ import diff.util.DifferSide;
 @Service
 public interface DifferService {
 
+	/**
+	 * Set data on DifferSide position
+	 * @param id
+	 * @param left
+	 * @param side
+	 * @return
+	 */
 	public DifferObject defineData(final Long id, final String left, final DifferSide side);
 
+	/**
+	 * Compare DifferObject values
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	public DifferResponse compare(final Long id) throws Exception;
 
+	/**
+	 * Retrieve all DifferObjects
+	 * @return
+	 */
 	public List<DifferObject> retrieveAll();
 
 }
