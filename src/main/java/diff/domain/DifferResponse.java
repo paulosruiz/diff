@@ -3,7 +3,7 @@ package diff.domain;
 import java.util.List;
 
 public class DifferResponse {
-	private Long id;
+	private String id;
 	private Boolean equals = false;
 	private Boolean sameSize = false;
 	private List<Offset> offsets;
@@ -12,7 +12,7 @@ public class DifferResponse {
 	/**
 	 * @return the id
 	 */
-	public final Long getId() {
+	public final String getId() {
 		return id;
 	}
 
@@ -41,7 +41,7 @@ public class DifferResponse {
 	 * @param id
 	 *            the id to set
 	 */
-	public final void setId(final Long id) {
+	public final void setId(final String id) {
 		this.id = id;
 	}
 

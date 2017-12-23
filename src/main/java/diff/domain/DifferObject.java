@@ -11,7 +11,7 @@ public class DifferObject {
 
 	@Id
 	@Column(name = "ID")
-	private Long id;
+	private String id;
 
 	@Column(name = "LEFT")
 	private String left;
@@ -22,7 +22,7 @@ public class DifferObject {
 	public DifferObject() {
 		
 	}
-	public DifferObject(Long id) {
+	public DifferObject(String id) {
 		this.id = id;
 	}
 	
@@ -33,7 +33,7 @@ public class DifferObject {
 	/**
 	 * @return the id
 	 */
-	public final Long getId() {
+	public final String getId() {
 		return id;
 	}
 	/**
@@ -51,7 +51,7 @@ public class DifferObject {
 	/**
 	 * @param id the id to set
 	 */
-	public final void setId(Long id) {
+	public final void setId(String id) {
 		this.id = id;
 	}
 	/**

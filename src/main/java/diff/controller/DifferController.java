@@ -30,7 +30,7 @@ public class DifferController {
 	DifferService differService;
 
 	@PostMapping(value = "/{id}/{side}", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<DifferObject> defineData(@PathVariable("id") final Long id,
+	public ResponseEntity<DifferObject> defineData(@PathVariable("id") final String id,
 			@PathVariable("side") final String side, @RequestBody DifferBean encodedLeft) {
 		LOG.info("Received defineData request");
 		LOG.info(encodedLeft);
@@ -49,7 +49,7 @@ public class DifferController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
-	public ResponseEntity<DifferResponse> compare(@PathVariable final long id) throws Exception {
+	public ResponseEntity<DifferResponse> compare(@PathVariable final String id) throws Exception {
 		LOG.info("Received compare request");
 		DifferResponse response = differService.compare(id);
 

@@ -31,12 +31,12 @@ public class DifferServiceImpl implements DifferService {
 	@Autowired
 	private DifferRepository repository;
 
-	private DifferObject getDiffer(final Long id) {
+	private DifferObject getDiffer(final String id) {
 		LOG.info("Starting getDiffer method");
 		DifferObject newDiff = null;
 		try {
 			if (id != null) {
-				newDiff = repository.findOne(id);
+				newDiff = repository.findById(id);
 				if (newDiff != null) {
 					LOG.info("Differ was found");
 				}
@@ -47,7 +47,7 @@ public class DifferServiceImpl implements DifferService {
 		return newDiff;
 	}
 
-	private DifferObject createDiffer(final Long id) {
+	private DifferObject createDiffer(final String id) {
 		LOG.info("Starting createDiffer method");
 		DifferObject newDiff = null;
 		try {
@@ -65,7 +65,7 @@ public class DifferServiceImpl implements DifferService {
 	}
 
 	@Override
-	public DifferObject defineData(final Long id, final String data, final DifferSide side) {
+	public DifferObject defineData(final String id, final String data, final DifferSide side) {
 		LOG.info("Starting defineData method");
 
 		DifferObject differ = null;
@@ -152,9 +152,9 @@ public class DifferServiceImpl implements DifferService {
 	 * @return
 	 * 
 	 */
-	public DifferResponse compare(Long id) throws Exception {
+	public DifferResponse compare(final String id) throws Exception {
 		LOG.info("Starting comparing method");
-		LOG.info("ID: " + id);
+		
 		DifferResponse response = new DifferResponse();
 		response.setId(id);
 		try {
@@ -184,7 +184,7 @@ public class DifferServiceImpl implements DifferService {
 					// Check if arrays are equals
 					if (Arrays.equals(leftDecoded, rightDecode)) {
 						response.setEquals(true);
-						LOG.info("Contents are the same");
+						LOG.debug("Contents are the same");
 						response.setStatus(DifferResponseStatus.EQUALS.value());
 					} else {
 						// Size are equals but the contents are different
@@ -211,25 +211,25 @@ public class DifferServiceImpl implements DifferService {
 		List<Offset> listOffsets = new ArrayList<Offset>();
 		int offset = -1;
 		int length = 0;
-		int i=0;
-		for ( i = 0; i < leftDecoded.length; i++) {
+		int i = 0;
+		for (i = 0; i < leftDecoded.length; i++) {
 			LOG.info("i:" + i);
 			if (offset == -1 && leftDecoded[i] != rightDecode[i]) {
 				offset = i;
-				LOG.info("offset:" + offset);
+				LOG.debug("offset:" + offset);
 			}
-			LOG.info("leftDecoded:" + Byte.toString(leftDecoded[i]));
-			LOG.info("rightDecode:" + Byte.toString(rightDecode[i]));
+			LOG.debug("leftDecoded:" + Byte.toString(leftDecoded[i]));
+			LOG.debug("rightDecode:" + Byte.toString(rightDecode[i]));
 			if (offset >= 0 && leftDecoded[i] == rightDecode[i]) {
 				length = i - offset;
 				listOffsets.add(new Offset(offset, length));
-				LOG.info("Length:" + length);
+				LOG.debug("Length:" + length);
 				offset = -1;
 			}
 
 		}
-		//In case of the final byte is different
-		if (offset >=0 && leftDecoded[i-1] != rightDecode[i-1]) {
+		// In case of the final byte is different
+		if (offset >= 0 && leftDecoded[i - 1] != rightDecode[i - 1]) {
 			length = i - offset;
 			listOffsets.add(new Offset(offset, length));
 		}
@@ -244,12 +244,4 @@ public class DifferServiceImpl implements DifferService {
 		return repository.findAll();
 	}
 
-	/*
-	 * @Override public void delete(Long id) { LOG.info("Starting delete method");
-	 * try { repository.delete(id); } catch (Exception e) {
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
 }
