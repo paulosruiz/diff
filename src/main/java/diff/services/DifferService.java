@@ -34,7 +34,7 @@ public interface DifferService {
 	 * @return
 	 * @throws Exception
 	 */
-	public DifferResponse compare(final String id) throws Exception;
+	public DifferResponse compare(final String id);
 
 	/**
 	 * Retrieve all DifferObjects

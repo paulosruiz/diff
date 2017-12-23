@@ -34,16 +34,17 @@ public class DifferServiceImpl implements DifferService {
 	private DifferObject getDiffer(final String id) {
 		LOG.info("Starting getDiffer method");
 		DifferObject newDiff = null;
+
 		try {
 			if (id != null) {
 				newDiff = repository.findById(id);
-				if (newDiff != null) {
-					LOG.info("Differ was found");
-				}
+
 			}
 		} catch (Exception e) {
-			LOG.error("Error during getDiffer", e);
+			LOG.error("Differ not found", e);
 		}
+
+		LOG.debug("Differ was found");
 		return newDiff;
 	}
 
@@ -54,7 +55,7 @@ public class DifferServiceImpl implements DifferService {
 			if (id != null) {
 				newDiff = new DifferObject(id);
 				repository.save(newDiff);
-				LOG.info("Differ created");
+
 				LOG.debug(newDiff.toString());
 			}
 
@@ -73,6 +74,7 @@ public class DifferServiceImpl implements DifferService {
 			LOG.debug("Id: " + id.toString());
 			LOG.debug("Data: " + data);
 			LOG.debug("Side: " + side.name());
+
 			differ = this.getDiffer(id);
 			if (differ == null) {
 				differ = this.createDiffer(id);
@@ -130,18 +132,15 @@ public class DifferServiceImpl implements DifferService {
 	private boolean validateToCompare(DifferObject differToCompare, DifferResponse response) {
 		LOG.info("Starting validateToCompare method");
 		boolean isValid = true;
-		if (differToCompare == null) {
-			response.setStatus(DifferResponseStatus.NOT_FOUND.value());
+
+		if (!validateToCompareRight(differToCompare)) {
+			response.setStatus(DifferResponseStatus.MISSING_RIGHT.value());
 			isValid = false;
-		} else {
-			if (!validateToCompareRight(differToCompare)) {
-				response.setStatus(DifferResponseStatus.MISSING_RIGHT.value());
-				isValid = false;
-			} else if (!validateToCompareLeft(differToCompare)) {
-				response.setStatus(DifferResponseStatus.MISSING_LEFT.value());
-				isValid = false;
-			}
+		} else if (!validateToCompareLeft(differToCompare)) {
+			response.setStatus(DifferResponseStatus.MISSING_LEFT.value());
+			isValid = false;
 		}
+
 		return isValid;
 	}
 
@@ -152,58 +151,75 @@ public class DifferServiceImpl implements DifferService {
 	 * @return
 	 * 
 	 */
-	public DifferResponse compare(final String id) throws Exception {
+	public DifferResponse compare(final String id) {
 		LOG.info("Starting comparing method");
-		
+
 		DifferResponse response = new DifferResponse();
 		response.setId(id);
-		try {
-			DifferObject differToCompare = getDiffer(id);
-			if (validateToCompare(differToCompare, response)) {
+		DifferObject differToCompare = null;
+		byte[] leftDecoded;
+		byte[] rightDecode;
 
-				final byte[] leftDecoded = Base64.getDecoder().decode(differToCompare.getLeft());
+		differToCompare = getDiffer(id);
 
-				final byte[] rightDecode = Base64.getDecoder().decode(differToCompare.getRight());
+		if (differToCompare == null) {
+			response.setStatus(DifferResponseStatus.NOT_FOUND.value());
+			return response;
+		} else if (validateToCompare(differToCompare, response)) {
 
-				LOG.info("Comparing: " + differToCompare.toString());
-				LOG.debug("Right Size: " + rightDecode.length);
-				LOG.debug("Left Size: " + leftDecoded.length);
-
-				// Check is size is the same
-				if (leftDecoded.length != rightDecode.length) {
-					LOG.debug("Arrays size are not equals");
-
-					response.setEquals(false);
-					response.setSameSize(false);
-					response.setStatus(DifferResponseStatus.SIZE_MISMATCH.value());
-				} else {
-					// Same size = true
-					response.setSameSize(true);
-					LOG.debug("Arrays size are equals");
-
-					// Check if arrays are equals
-					if (Arrays.equals(leftDecoded, rightDecode)) {
-						response.setEquals(true);
-						LOG.debug("Contents are the same");
-						response.setStatus(DifferResponseStatus.EQUALS.value());
-					} else {
-						// Size are equals but the contents are different
-						LOG.debug("Contents are NOT the same");
-						response.setEquals(false);
-						response.setStatus(DifferResponseStatus.CONTENT_MISMATCH.value());
-
-						// verify the differences
-						List<Offset> offsets = checkOffsets(leftDecoded, rightDecode);
-						response.setOffsets(offsets);
-					}
-				}
+			try {
+				leftDecoded = Base64.getDecoder().decode(differToCompare.getLeft());
+				rightDecode = Base64.getDecoder().decode(differToCompare.getRight());
+			} catch (IllegalArgumentException e) {
+				LOG.error("Error Base64 could not be decoded");
+				response.setStatus(DifferResponseStatus.BASE64_ERROR.value());
+				return response;
 			}
 
-		} catch (Exception e) {
-			LOG.error("error during compare", e);
-			throw new Exception("Error during comparation", e);
+			LOG.info("Comparing: " + differToCompare.toString());
+			LOG.debug("Right Size: " + rightDecode.length);
+			LOG.debug("Left Size: " + leftDecoded.length);
+			
+			compare(response, leftDecoded, rightDecode);
 		}
+
 		return response;
+
+	}
+
+	/**
+	 * @param response
+	 * @param leftDecoded
+	 * @param rightDecode
+	 */
+	private void compare(DifferResponse response, byte[] leftDecoded, byte[] rightDecode) {
+		// Check is size is the same
+		if (leftDecoded.length != rightDecode.length) {
+			LOG.debug("Arrays size are not equals");
+			response.setEquals(false);
+			response.setSameSize(false);
+			response.setStatus(DifferResponseStatus.SIZE_MISMATCH.value());
+		} else {
+			// Same size = true
+			response.setSameSize(true);
+			LOG.debug("Arrays size are equals");
+
+			// Check if arrays are equals
+			if (Arrays.equals(leftDecoded, rightDecode)) {
+				response.setEquals(true);
+				LOG.debug("Contents are the same");
+				response.setStatus(DifferResponseStatus.EQUALS.value());
+			} else {
+				// Size are equals but the contents are different
+				LOG.debug("Contents are NOT the same");
+				response.setEquals(false);
+				response.setStatus(DifferResponseStatus.CONTENT_MISMATCH.value());
+
+				// verify the differences
+				List<Offset> offsets = checkOffsets(leftDecoded, rightDecode);
+				response.setOffsets(offsets);
+			}
+		}
 	}
 
 	private List<Offset> checkOffsets(final byte[] leftDecoded, final byte[] rightDecode) {
@@ -213,7 +229,7 @@ public class DifferServiceImpl implements DifferService {
 		int length = 0;
 		int i = 0;
 		for (i = 0; i < leftDecoded.length; i++) {
-			LOG.info("i:" + i);
+			LOG.debug("i:" + i);
 			if (offset == -1 && leftDecoded[i] != rightDecode[i]) {
 				offset = i;
 				LOG.debug("offset:" + offset);

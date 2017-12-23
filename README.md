@@ -3,6 +3,7 @@ TODO Controller LOGS
 TODO TESTS
 	Service Testado
 	Controller Pendente
+	Repository pendente
 TODO Compare
 
 

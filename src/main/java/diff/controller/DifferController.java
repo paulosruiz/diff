@@ -42,7 +42,7 @@ public class DifferController {
 				return new ResponseEntity<>(newDiffer, HttpStatus.CREATED);
 			}
 		} catch (java.lang.IllegalArgumentException e) {
-			return new ResponseEntity<>(null, HttpStatus.PRECONDITION_FAILED);
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 		return null;
 

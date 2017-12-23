@@ -7,8 +7,9 @@ package diff.util;
  *
  */
 public enum DifferResponseStatus {
-	EQUALS("Equals"), NOT_FOUND("Not Found"), SIZE_MISMATCH("Size does not match"), CONTENT_MISMATCH(
-			"Content does not match"), MISSING_LEFT("Missing left data"), MISSING_RIGHT("Missing right data");
+	BASE64_ERROR("Base64 request error"),EQUALS("Equals"), NOT_FOUND("Not Found"), SIZE_MISMATCH(
+			"Size does not match"), CONTENT_MISMATCH(
+					"Content does not match"), MISSING_LEFT("Missing left data"), MISSING_RIGHT("Missing right data");
 
 	private String value;
 

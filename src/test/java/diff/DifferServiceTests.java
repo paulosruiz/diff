@@ -21,15 +21,14 @@ import diff.services.DifferService;
 import diff.util.DifferResponseStatus;
 import diff.util.DifferSide;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
 /**
  * Differ Service test class
  * 
  * @author paulo.almeida.junior
  *
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class DifferServiceTests {
 
 	@Autowired
@@ -38,15 +37,12 @@ public class DifferServiceTests {
 	@Autowired
 	private DifferRepository repository;
 
-	@Autowired
-	private MockMvc mockMvc;
-
 	final String TESTID = new String(DifferServiceTests.class.getName());
 
 	@After
 	public void UndoSetUp() {
 		try {
-			repository.delete(new DifferObject(TESTID));
+		repository.delete(new DifferObject(TESTID));
 		} catch (Exception e) {
 
 		}
@@ -100,16 +96,34 @@ public class DifferServiceTests {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void Base64Decode() {
+		String leftData = "  "; 
+		String rightData = "  "; 
+		try {
+			service.defineData(TESTID, leftData, DifferSide.LEFT);
+			service.defineData(TESTID, rightData, DifferSide.RIGHT);
+			DifferResponse response = service.compare(TESTID);
+			assertFalse("Same size", response.getSameSize());
+			assertFalse("Equals", response.getEquals());
+			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.BASE64_ERROR.value());
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@Test
 	public void notSameSize() {
-		String leftData = "QUFBQkJCYWFhYWFhYWFhYWE="; // AAABBBaaaaaaaaaaa
+		String leftData = "QkFBQg=="; // BAAB
 		String rightData = "QUFBQkJC"; // AAAAAA
 
-		service.defineData(TESTID, leftData, DifferSide.LEFT);
-		service.defineData(TESTID, rightData, DifferSide.RIGHT);
 		DifferResponse response;
 		try {
+			service.defineData(TESTID, leftData, DifferSide.LEFT);
+			service.defineData(TESTID, rightData, DifferSide.RIGHT);
 			response = service.compare(TESTID);
 			System.out.println(response);
 
@@ -126,11 +140,11 @@ public class DifferServiceTests {
 	public void sameSizeAndEqual() {
 		String leftData = "QUFBQkJC"; // AAAAAA
 		String rightData = "QUFBQkJC"; // AAAAAA
-
-		service.defineData(TESTID, leftData, DifferSide.LEFT);
-		service.defineData(TESTID, rightData, DifferSide.RIGHT);
-		DifferResponse response;
 		try {
+			service.defineData(TESTID, leftData, DifferSide.LEFT);
+			service.defineData(TESTID, rightData, DifferSide.RIGHT);
+			DifferResponse response;
+
 			response = service.compare(TESTID);
 			System.out.println(response);
 			assertTrue("Same size", response.getSameSize());
@@ -154,10 +168,10 @@ public class DifferServiceTests {
 		 * Base64.getEncoder().encode(leftDecodedBytes); byte[] rightEncodedBytes =
 		 * Base64.getEncoder().encode(rightDecodedBytes);
 		 */
-
-		service.defineData(TESTID, leftData, DifferSide.LEFT);
-		service.defineData(TESTID, rightData, DifferSide.RIGHT);
 		try {
+			service.defineData(TESTID, leftData, DifferSide.LEFT);
+			service.defineData(TESTID, rightData, DifferSide.RIGHT);
+
 			DifferResponse response = service.compare(TESTID);
 
 			assertTrue("Same size", response.getSameSize());
@@ -187,10 +201,10 @@ public class DifferServiceTests {
 
 		String leftData = "QUJCQg=="; // ABBB
 		String rightData = "QUFBQQ=="; // AAAA
-
-		service.defineData(TESTID, leftData, DifferSide.LEFT);
-		service.defineData(TESTID, rightData, DifferSide.RIGHT);
 		try {
+			service.defineData(TESTID, leftData, DifferSide.LEFT);
+			service.defineData(TESTID, rightData, DifferSide.RIGHT);
+
 			DifferResponse response = service.compare(TESTID);
 
 			assertTrue("Same size", response.getSameSize());
@@ -216,10 +230,10 @@ public class DifferServiceTests {
 
 		String leftData = "QUFCQg=="; // AABB
 		String rightData = "QkJBQQ=="; // BBAA
-
-		service.defineData(TESTID, leftData, DifferSide.LEFT);
-		service.defineData(TESTID, rightData, DifferSide.RIGHT);
 		try {
+			service.defineData(TESTID, leftData, DifferSide.LEFT);
+			service.defineData(TESTID, rightData, DifferSide.RIGHT);
+
 			DifferResponse response = service.compare(TESTID);
 
 			assertTrue("Same size", response.getSameSize());
@@ -245,10 +259,10 @@ public class DifferServiceTests {
 
 		String leftData = "QkFBQg=="; // BAAB
 		String rightData = "QkJCQg=="; // BBBB
-
-		service.defineData(TESTID, leftData, DifferSide.LEFT);
-		service.defineData(TESTID, rightData, DifferSide.RIGHT);
 		try {
+			service.defineData(TESTID, leftData, DifferSide.LEFT);
+			service.defineData(TESTID, rightData, DifferSide.RIGHT);
+
 			DifferResponse response = service.compare(TESTID);
 
 			assertTrue("Same size", response.getSameSize());
@@ -280,10 +294,10 @@ public class DifferServiceTests {
 		 * Base64.getEncoder().encode(leftDecodedBytes); byte[] rightEncodedBytes =
 		 * Base64.getEncoder().encode(rightDecodedBytes);
 		 */
-
-		service.defineData(TESTID, leftData, DifferSide.LEFT);
-		service.defineData(TESTID, rightData, DifferSide.RIGHT);
 		try {
+			service.defineData(TESTID, leftData, DifferSide.LEFT);
+			service.defineData(TESTID, rightData, DifferSide.RIGHT);
+
 			DifferResponse response = service.compare(TESTID);
 
 			assertTrue("Same size", response.getSameSize());
