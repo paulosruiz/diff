@@ -20,10 +20,11 @@ public class DifferServiceImpl implements DifferService {
 	private DifferRepository repository;
 
 	private DifferObject getDiffer(final Long id) {
+		LOG.info("getDiffer method started");
 		DifferObject newDiff = null;
 		try {
 			if (id != null) {
-				newDiff = this.getDiffer(id);
+				newDiff = repository.findOne(id);
 				if (newDiff != null) {
 					LOG.info("Differ was found");
 				}
@@ -35,18 +36,17 @@ public class DifferServiceImpl implements DifferService {
 	}
 
 	private DifferObject createDiffer(final Long id) {
+		LOG.info("createDiffer method started");
 		DifferObject newDiff = null;
 		try {
-			if (id != null)
-
+			if (id != null) {
 				newDiff = new DifferObject(id);
-			repository.save(newDiff);
-			LOG.info("Differ created");
-			LOG.debug(newDiff.toString());
+				repository.save(newDiff);
+				LOG.info("Differ created");
+				LOG.debug(newDiff.toString());
+			}
 
-		} catch (
-
-		Exception e) {
+		} catch (Exception e) {
 			LOG.error("Error during createDiffer", e);
 		}
 		return newDiff;
@@ -58,9 +58,13 @@ public class DifferServiceImpl implements DifferService {
 		 * if (id != null && !id.isEmpty()) { return
 		 * repository.findByIdAndAdminAndAdminOnly(id, null, false); }
 		 */
-		LOG.info("setLeftDiff method started");
+		LOG.info("defineData method started");
+
 		DifferObject differ = null;
 		if (id != null && data != null && side != null) {
+			LOG.debug("Id: " + id.toString());
+			LOG.debug("Data: " + data);
+			LOG.debug("Side: " + side.name());
 			differ = this.getDiffer(id);
 			if (differ == null) {
 				differ = this.createDiffer(id);

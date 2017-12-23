@@ -7,19 +7,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "differ")
-
 public class DifferObject {
 
 	@Id
 	@Column(name = "ID")
 	private Long id;
-
-	public DifferObject() {
-		
-	}
-	public DifferObject(Long id) {
-		this.id = id;
-	}
 
 	@Column(name = "LEFT")
 	private String left;
@@ -27,6 +19,13 @@ public class DifferObject {
 	@Column(name = "RIGHT")
 	private String right;
 
+	public DifferObject() {
+		
+	}
+	public DifferObject(Long id) {
+		this.id = id;
+	}
+	
 	@Override
 	public String toString() {
 		return "DifferObject [id=" + id + ", left=" + left + ", right=" + right + "]";
