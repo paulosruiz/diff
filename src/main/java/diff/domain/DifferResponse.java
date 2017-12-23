@@ -2,8 +2,6 @@ package diff.domain;
 
 import java.util.List;
 
-import diff.util.DifferResponseStatus;
-
 public class DifferResponse {
 	private Long id;
 	private Boolean equals = false;
@@ -51,7 +49,7 @@ public class DifferResponse {
 	 * @param equals
 	 *            the equals to set
 	 */
-	public final void setEquals(final Boolean equasl) {
+	public final void setEquals(final Boolean equals) {
 		this.equals = equals;
 	}
 

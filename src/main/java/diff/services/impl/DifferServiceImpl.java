@@ -16,8 +16,10 @@ import diff.repositories.DifferRepository;
 import diff.services.DifferService;
 import diff.util.DifferResponseStatus;
 import diff.util.DifferSide;
+
 /**
  * Differ Service methods implementation
+ * 
  * @author paulo.almeida.junior
  *
  */
@@ -161,15 +163,15 @@ public class DifferServiceImpl implements DifferService {
 
 				final byte[] rightDecode = Base64.getDecoder().decode(differToCompare.getRight());
 
-				LOG.debug("Comparing: " + differToCompare.toString());
-				LOG.debug("Arrays Sizes");
-				LOG.debug("Right: " + rightDecode.length);
-				LOG.debug("Left: " + leftDecoded.length);
+				LOG.info("Comparing: " + differToCompare.toString());
+				LOG.info("Arrays Sizes");
+				LOG.info("Right: " + rightDecode.length);
+				LOG.info("Left: " + leftDecoded.length);
 
 				// Check is size is the same
 				if (leftDecoded.length != rightDecode.length) {
 					LOG.debug("Arrays size are not equals");
-					
+
 					response.setEquals(false);
 					response.setSameSize(false);
 					response.setStatus(DifferResponseStatus.SIZE_MISMATCH.value());
@@ -177,20 +179,22 @@ public class DifferServiceImpl implements DifferService {
 					// Same size = true
 					response.setSameSize(true);
 					LOG.debug("Arrays size are equals");
-					
+
 					// Check if arrays are equals
 					if (Arrays.equals(leftDecoded, rightDecode)) {
-						LOG.debug("Contents are the same");
-					
-						// // Equals = true
 						response.setEquals(true);
+						
+						LOG.info("Contents are the same");
+						
+						// // Equals = true
+						
 						response.setStatus(DifferResponseStatus.EQUALS.value());
 					} else {
 						// Size are equals but the contents are different
 						LOG.debug("Contents are NOT the same");
 						response.setEquals(false);
 						response.setStatus(DifferResponseStatus.CONTENT_MISMATCH.value());
-					
+
 						// verify the differences
 						List<Offset> offsets = checkOffsets(leftDecoded, rightDecode);
 						response.setOffsets(offsets);
