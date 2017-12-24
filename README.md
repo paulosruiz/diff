@@ -27,7 +27,7 @@ In the root folder there are two files (sample_left.json and sample_right.json) 
 **Get Sample**
 >curl -X GET -H "Content-Type: application/json"  http://localhost:8080/v1/diff/1
 
-*Retrieve Sample
+**Retrieve Sample**
 >curl -X GET -H "Content-Type: application/json"  http://localhost:8080/v1/diff/retrieveAll
 
 #### API Documentation
