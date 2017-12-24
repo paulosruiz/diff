@@ -52,7 +52,7 @@ This section has two samples ids that can be used to perform a request to the ap
 #### Retrieve All
 >curl -X GET -H "Content-Type: application/json"  http://localhost:8080/v1/diff/retrieveAll
 
-##### Note: Windows it has to use  Backslash before each quotes on the curl command.
+##### Note: Use Backslash before each quotes on the curl command on Windows
 
 ## API Documentation
 REST API [Documentation](http://localhost:8080/swagger-ui.html)
@@ -79,4 +79,5 @@ The test results page is stored under `build/reports/test/index.html` from the p
 
 ## Next Steps
 1. Add a security restriction on retrieveAll endpoint.
-2. Create a endpoint to generate the Ids with left and right in a single request.
+2. Create a endpoint to generate the Ids with left and right in a single request (v2).
+3. Improve Exception handling.
