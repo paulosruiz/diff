@@ -5,14 +5,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
 import diff.domain.DifferObject;
 import diff.domain.DifferResponse;
@@ -22,7 +22,7 @@ import diff.util.DifferResponseStatus;
 import diff.util.DifferSide;
 
 /**
- * Differ Service test class
+ * DifferService test class
  * 
  * @author paulo.almeida.junior
  *
@@ -39,16 +39,22 @@ public class DifferServiceTests {
 
 	final String TESTID = new String(DifferServiceTests.class.getName());
 
+	/**
+	 * Removes each DifferObject created
+	 */
 	@After
 	public void UndoSetUp() {
 		try {
-		repository.delete(new DifferObject(TESTID));
+			repository.delete(new DifferObject(TESTID));
 		} catch (Exception e) {
 
 		}
 
 	}
 
+	/**
+	 * Checks if a DifferObject does not exists in the DB
+	 */
 	@Test
 	public void notFound() {
 
@@ -65,6 +71,9 @@ public class DifferServiceTests {
 
 	}
 
+	/**
+	 * Check if a DifferObject does not have the left Data
+	 */
 	@Test
 	public void missingLeft() {
 		String rightData = "QUFBQkJC"; // AAAAAA
@@ -81,6 +90,10 @@ public class DifferServiceTests {
 		}
 	}
 
+
+	/**
+	 * Check if a DifferObject does not have the right Data
+	 */
 	@Test
 	public void missingRight() {
 		String leftData = "QUFBQkJC"; // AAAAAA
@@ -96,11 +109,14 @@ public class DifferServiceTests {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * Check if the Base64 decode error is been handled
+	 */
 	@Test
 	public void Base64Decode() {
-		String leftData = "  "; 
-		String rightData = "  "; 
+		String leftData = "  ";
+		String rightData = "  ";
 		try {
 			service.defineData(TESTID, leftData, DifferSide.LEFT);
 			service.defineData(TESTID, rightData, DifferSide.RIGHT);
@@ -115,6 +131,9 @@ public class DifferServiceTests {
 		}
 	}
 
+	/**
+	 * Check behavior of DifferObject without the same size
+	 */
 	@Test
 	public void notSameSize() {
 		String leftData = "QkFBQg=="; // BAAB
@@ -136,6 +155,10 @@ public class DifferServiceTests {
 		}
 	}
 
+
+	/**
+	 * Check behavior of DifferObject with the same data
+	 */
 	@Test
 	public void sameSizeAndEqual() {
 		String leftData = "QUFBQkJC"; // AAAAAA
@@ -156,6 +179,10 @@ public class DifferServiceTests {
 		}
 	}
 
+
+	/**
+	 * Check behavior of DifferObject with offsets in the first and last positions
+	 */
 	@Test
 	public void firstAndLastDifferences() {
 
@@ -196,6 +223,10 @@ public class DifferServiceTests {
 		}
 	}
 
+
+	/**
+	 * Check behavior of DifferObject with offsets in sufix
+	 */
 	@Test
 	public void sufixDifference() {
 
@@ -225,6 +256,11 @@ public class DifferServiceTests {
 		}
 	}
 
+
+	/**
+	 * Check behavior of DifferObject with offsets in a reverse Data
+	 * ex: AABB == BBAA
+	 */
 	@Test
 	public void reverseDifference() {
 
@@ -254,6 +290,10 @@ public class DifferServiceTests {
 		}
 	}
 
+
+	/**
+	 * Check behavior of DifferObject with offsets the middle
+	 */
 	@Test
 	public void middleDifference() {
 
@@ -282,6 +322,10 @@ public class DifferServiceTests {
 		}
 	}
 
+
+	/**
+	 * Check behavior of DifferObject with sameSize but that are not equals
+	 */
 	@Test
 	public void sameSizeNotEquals() {
 
@@ -310,6 +354,29 @@ public class DifferServiceTests {
 			assertThat(response.getOffsets().get(0).getLength()).isEqualTo(3);
 			assertThat(response.getOffsets().get(0).getOffset()).isEqualTo(3);
 			assertThat(response.getStatus()).isEqualTo(DifferResponseStatus.CONTENT_MISMATCH.value());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+	/**
+	 * Check retrieveAll method
+	 */
+	@Test
+	public void retreiveAll() {
+
+		String leftData = "QUFBQUFB"; // AAAAAA
+		
+		
+		try {
+			service.defineData(TESTID, leftData, DifferSide.LEFT);
+
+			List<DifferObject> response = service.retrieveAll();
+
+			assertThat(response).isNotEmpty();
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
