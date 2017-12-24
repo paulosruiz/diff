@@ -1,7 +1,7 @@
 # diff
 
 ## Project Overview
-An application that provides two endpoints that receives Base64 encoded data and two endpoints, one to compare the saved data and other to retrieve all the existing data.
+An application that provides two endpoints to receives Base64 encoded data and two endpoints, one to compare the saved data and other to retrieve all the existing data.
 
 ## Download / Clone Repository
 Download the ZIP file of this repository or clone it.
