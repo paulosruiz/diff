@@ -39,7 +39,7 @@ This section has two samples ids that can be used to perform a request to the ap
 ### Id 2 - Data does not match
 
 #### Set Right Data
-curl -H "Content-Type: application/json" -X POST -d "{\"data\":\"QUFBQQ==\"}" http://localhost:8080/v1/diff/2/right
+>curl -H "Content-Type: application/json" -X POST -d "{\"data\":\"QUFBQQ==\"}" http://localhost:8080/v1/diff/2/right
 
 #### Set Left Data
 >curl -H "Content-Type: application/json" -X POST -d "{\"data\":\"QkFBQg==\"}" http://localhost:8080/v1/diff/2/left
