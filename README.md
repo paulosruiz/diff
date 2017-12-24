@@ -80,25 +80,3 @@ The test results page is stored under `build/reports/test/index.html` from the p
 ## Next Steps
 1. Add a security restriction on retrieveAll endpoint.
 2. Create a endpoint to generate the Ids with left and right in a single request.
-
-TODO SWAGGER
-	incluir documentação no readMe
-	
-
-Feitos:
-Revisar strings das classes de teste
-Declarar no Readme:
-Included a property status in the response
-Included a delete service
-
-
-TODO TESTS
-	Documentação
-	Service Testado
-	Controller Testado
-	Repository Testado
-
-TODO remover um Left & Right e deixar um só via parametro
-TODO persistencia do banco
-TODO Compare
-TODO Controller LOGS
