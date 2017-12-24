@@ -31,7 +31,7 @@ public class DifferRepositoryTests {
 	final String TESTNOTFOUNDID = new String(DifferRepositoryTests.class.getName() + "NOT");
 
 	/**
-	 * Prepare the dataforTest
+	 * Prepare the data for test
 	 */
 	@Before
 	public void SetUp() {
