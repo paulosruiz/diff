@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Base64;
+
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -85,7 +87,15 @@ public class DifferControllerTests {
 	 */
 	@Test
 	public void insertLeftData() throws Exception {
-		String leftData = "QkFBQg=="; // BAAB
+		// String leftData = "QkFBQg=="; // BAAB
+
+		final String left = "BAAB"; // BAAB
+
+		final byte[] leftDecodedBytes = left.getBytes();
+		final byte[] leftEncodedBytes = Base64.getEncoder().encode(leftDecodedBytes);
+
+		final String leftData = new String(leftEncodedBytes);
+
 		DifferBean differBean = new DifferBean(leftData);
 
 		this.mockMvc.perform(post(INSERTLEFT).contentType(MediaType.APPLICATION_JSON).content(asJsonString(differBean)))
@@ -102,7 +112,15 @@ public class DifferControllerTests {
 	@Test
 	public void insertRightData() throws Exception {
 
-		String rightData = "QUFBQkJC"; // AAAAAA
+		// String rightData = "QUFBQkJC"; // AAAAAA
+
+		final String right = "AAAAAA"; // AAAAAA
+
+		final byte[] rightDecodedBytes = right.getBytes();
+		final byte[] rightEncodedBytes = Base64.getEncoder().encode(rightDecodedBytes);
+
+		final String rightData = new String(rightEncodedBytes);
+
 		DifferBean differBean = new DifferBean(rightData);
 
 		this.mockMvc
@@ -129,8 +147,21 @@ public class DifferControllerTests {
 	 */
 	@Test
 	public void sameSize() throws Exception {
-		String leftData = "QUFBQkJC"; // AAAAAA
-		String rightData = "QUFBQkJC"; // AAAAAA
+		/*
+		 * String leftData = "QUFBQkJC"; // AAAAAA String rightData = "QUFBQkJC"; //
+		 * AAAAAA
+		 */
+
+		final String left = "AAAAAA"; // AAAAAA
+		final String right = "BBBBBB"; // BBBBBB
+
+		final byte[] leftDecodedBytes = left.getBytes();
+		final byte[] rightDecodedBytes = right.getBytes();
+		final byte[] leftEncodedBytes = Base64.getEncoder().encode(leftDecodedBytes);
+		final byte[] rightEncodedBytes = Base64.getEncoder().encode(rightDecodedBytes);
+
+		final String leftData = new String(leftEncodedBytes);
+		final String rightData = new String(rightEncodedBytes);
 
 		DifferBean differBeanLeft = new DifferBean(leftData);
 		DifferBean differBeanRight = new DifferBean(rightData);
@@ -154,8 +185,20 @@ public class DifferControllerTests {
 	 */
 	@Test
 	public void notSameSize() throws Exception {
-		String leftData = "QkFBQg=="; // BAAB
-		String rightData = "QUFBQkJC"; // AAAAAA
+		/*
+		 * String leftData = "QkFBQg=="; // BAAB String rightData = "QUFBQkJC"; //
+		 * AAAAAA
+		 */
+		final String left = "BAAB"; // AAAAAA
+		final String right = "AAAAAA"; // AAAA
+
+		final byte[] leftDecodedBytes = left.getBytes();
+		final byte[] rightDecodedBytes = right.getBytes();
+		final byte[] leftEncodedBytes = Base64.getEncoder().encode(leftDecodedBytes);
+		final byte[] rightEncodedBytes = Base64.getEncoder().encode(rightDecodedBytes);
+
+		final String leftData = new String(leftEncodedBytes);
+		final String rightData = new String(rightEncodedBytes);
 
 		DifferBean differBeanLeft = new DifferBean(leftData);
 		DifferBean differBeanRight = new DifferBean(rightData);
@@ -180,8 +223,21 @@ public class DifferControllerTests {
 	 */
 	@Test
 	public void notEquals() throws Exception {
-		String leftData = "QkFBQg=="; // BAAB
-		String rightData = "QUFBQkJC"; // AAAAAA
+		/*
+		 * String leftData = "QkFBQg=="; // BAAB String rightData = "QUFBQkJC"; //
+		 * AAAAAA
+		 */
+
+		final String left = "BAAB"; // BAAB
+		final String right = "AAAAAA"; // AAAAAA
+
+		final byte[] leftDecodedBytes = left.getBytes();
+		final byte[] rightDecodedBytes = right.getBytes();
+		final byte[] leftEncodedBytes = Base64.getEncoder().encode(leftDecodedBytes);
+		final byte[] rightEncodedBytes = Base64.getEncoder().encode(rightDecodedBytes);
+
+		final String leftData = new String(leftEncodedBytes);
+		final String rightData = new String(rightEncodedBytes);
 
 		DifferBean differBeanLeft = new DifferBean(leftData);
 		DifferBean differBeanRight = new DifferBean(rightData);
@@ -205,8 +261,20 @@ public class DifferControllerTests {
 	 */
 	@Test
 	public void equals() throws Exception {
-		String leftData = "QUFBQkJC"; // AAAAAA
-		String rightData = "QUFBQkJC"; // AAAAAA
+		/*
+		 * String leftData = "QUFBQkJC"; // AAAAAA String rightData = "QUFBQkJC"; //
+		 * AAAAAA
+		 */
+		final String left = "AAAAAA"; // AAAAAA
+		final String right = "AAAAAA"; // AAAAAA
+
+		final byte[] leftDecodedBytes = left.getBytes();
+		final byte[] rightDecodedBytes = right.getBytes();
+		final byte[] leftEncodedBytes = Base64.getEncoder().encode(leftDecodedBytes);
+		final byte[] rightEncodedBytes = Base64.getEncoder().encode(rightDecodedBytes);
+
+		final String leftData = new String(leftEncodedBytes);
+		final String rightData = new String(rightEncodedBytes);
 
 		DifferBean differBeanLeft = new DifferBean(leftData);
 		DifferBean differBeanRight = new DifferBean(rightData);
@@ -230,8 +298,21 @@ public class DifferControllerTests {
 	 */
 	@Test
 	public void retrieveAll() throws Exception {
-		String leftData = "QkFBQg=="; // BAAB
-		String rightData = "QUFBQkJC"; // AAAAAA
+		/*
+		 * String leftData = "QkFBQg=="; // BAAB String rightData = "QUFBQkJC"; //
+		 * AAAAAA
+		 */
+
+		final String left = "AAAAAA"; // AAAAAA
+		final String right = "AAAAAA"; // AAAAAA
+
+		final byte[] leftDecodedBytes = left.getBytes();
+		final byte[] rightDecodedBytes = right.getBytes();
+		final byte[] leftEncodedBytes = Base64.getEncoder().encode(leftDecodedBytes);
+		final byte[] rightEncodedBytes = Base64.getEncoder().encode(rightDecodedBytes);
+
+		final String leftData = new String(leftEncodedBytes);
+		final String rightData = new String(rightEncodedBytes);
 
 		DifferBean differBeanLeft = new DifferBean(leftData);
 		DifferBean differBeanRight = new DifferBean(rightData);

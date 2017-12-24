@@ -25,10 +25,12 @@ In the root folder there are two files (sample_left.json and sample_right.json) 
 REST API [Documentation] (http://localhost:8080/swagger-ui.html)
 ###### To access this API Documentation the application should be running.
 
-#### Used Technologies
+#### Used Technologies & Frameworks
 1. Java 8
 2. Spring Boot
-3. H2 Database 
+3. H2 Database
+4. Junit 
+5. 
 4. Swagger
 
 #### Build the Application
