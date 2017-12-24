@@ -56,7 +56,7 @@ This section has two samples ids that can be used to perform a request to the ap
 
 ## API Documentation
 REST API [Documentation](http://localhost:8080/swagger-ui.html)
-##### To access this API Documentation the application should be running.
+##### Note: To access this API Documentation the application should be running.
 
 ## Used Technologies & Frameworks
 1. Java 8
