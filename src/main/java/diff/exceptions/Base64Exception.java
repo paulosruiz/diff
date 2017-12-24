@@ -1,5 +1,10 @@
 package diff.exceptions;
 
+/**
+ * Base64Exception 
+ * @author paulo.almeida.junior
+ *
+ */
 public class Base64Exception extends Exception {
 
 	private static final long serialVersionUID = 1L;

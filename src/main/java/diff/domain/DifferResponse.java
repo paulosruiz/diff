@@ -2,6 +2,11 @@ package diff.domain;
 
 import java.util.List;
 
+/**
+ * DifferResponse object
+ * @author paulo.almeida.junior
+ *
+ */
 public class DifferResponse {
 	private String id;
 	private Boolean equals = false;

@@ -1,5 +1,10 @@
 package diff.domain;
 
+/**
+ * DifferBean used for POST methods
+ * @author paulo.almeida.junior
+ *
+ */
 public class DifferBean {
 
 	String data = null;

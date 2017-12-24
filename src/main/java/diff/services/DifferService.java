@@ -9,7 +9,7 @@ import diff.domain.DifferResponse;
 import diff.util.DifferSide;
 
 /**
- * Differ service interface
+ * DifferService interface
  * 
  * @author paulo.almeida.junior
  *
@@ -43,11 +43,5 @@ public interface DifferService {
 	 */
 	public List<DifferObject> retrieveAll();
 
-	/**
-	 * Delete DifferObject
-	 * 
-	 * @param id
-	 * 
-	 *            public void delete(final Long id);
-	 */
+	
 }

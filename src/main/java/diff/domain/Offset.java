@@ -1,5 +1,12 @@
 package diff.domain;
 
+/**
+ * Offset object 
+ * offset has the position
+ * length has the size of the offset
+ * @author paulo.almeida.junior
+ *
+ */
 public class Offset {
 	private int offset;
 	private int length = 0;

@@ -5,6 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * DifferObject that is been persisted on the Database
+ * @author paulo.almeida.junior
+ *
+ */
 @Entity
 @Table(name = "differ")
 public class DifferObject {

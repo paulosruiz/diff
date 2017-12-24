@@ -1,4 +1,4 @@
-TODO Controller LOGS
+
 Revisar strings das classes de teste
 
 Declarar no Readme:
@@ -10,6 +10,7 @@ TODO SWAGGER
 
 	Feitos:
 TODO TESTS
+	Documentação
 	Service Testado
 	Controller Testado
 	Repository Testado
@@ -17,3 +18,4 @@ TODO TESTS
 TODO remover um Left & Right e deixar um só via parametro
 TODO persistencia do banco
 TODO Compare
+TODO Controller LOGS

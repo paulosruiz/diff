@@ -1,7 +1,7 @@
 package diff.util;
 
 /**
- * Response Status for Differ
+ * Response Status for DifferResponse
  * 
  * @author paulo.almeida.junior
  *

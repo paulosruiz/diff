@@ -26,6 +26,7 @@ import diff.util.DifferResponseStatus;
 
 /**
  * DifferController Test Class
+ * 
  * @author paulo.almeida.junior
  *
  */
@@ -51,6 +52,7 @@ public class DifferControllerTests {
 
 	/**
 	 * Converts Object to JSON
+	 * 
 	 * @param obj
 	 * @return
 	 */
@@ -77,30 +79,6 @@ public class DifferControllerTests {
 	}
 
 	/**
-	 * Checks the behaviour of the response when data is the same
-	 * @throws Exception
-	 */
-	@Test
-	public void equals() throws Exception {
-		String leftData = "QUFBQkJC"; // AAAAAA
-		String rightData = "QUFBQkJC"; // AAAAAA
-
-		DifferBean differBeanLeft = new DifferBean(leftData);
-		DifferBean differBeanRight = new DifferBean(rightData);
-
-		this.mockMvc
-				.perform(post(INSERTLEFT).contentType(MediaType.APPLICATION_JSON).content(asJsonString(differBeanLeft)))
-				.andDo(print()).andExpect(status().isCreated());
-
-		this.mockMvc.perform(
-				post(INSERTRIGHT).contentType(MediaType.APPLICATION_JSON).content(asJsonString(differBeanRight)))
-				.andDo(print()).andExpect(status().isCreated());
-
-		this.mockMvc.perform(get(COMPARE)).andDo(print()).andExpect(jsonPath("$.equals", is(true)))
-				.andExpect(jsonPath("$.sameSize", is(true))).andExpect(status().isOk());
-	}
-
-	/**
 	 * Insert data in the Left
 	 * 
 	 * @throws Exception
@@ -115,7 +93,7 @@ public class DifferControllerTests {
 				.andDo(print()).andExpect(status().isCreated());
 
 	}
-	
+
 	/**
 	 * Insert data in the Right
 	 * 
@@ -146,6 +124,7 @@ public class DifferControllerTests {
 
 	/**
 	 * Check the behavior when the data has the same size
+	 * 
 	 * @throws Exception
 	 */
 	@Test
@@ -164,12 +143,13 @@ public class DifferControllerTests {
 				post(INSERTRIGHT).contentType(MediaType.APPLICATION_JSON).content(asJsonString(differBeanRight)))
 				.andDo(print()).andExpect(status().isCreated());
 
-		this.mockMvc.perform(get(COMPARE)).andDo(print()).andExpect(jsonPath("$.equals", is(false)))
+		this.mockMvc.perform(get(COMPARE)).andDo(print()).andExpect(jsonPath("$.sameSize", is(true)))
 				.andExpect(status().isOk());
 	}
 
 	/**
 	 * Check the behavior when the data does not have the same size
+	 * 
 	 * @throws Exception
 	 */
 	@Test
@@ -195,6 +175,7 @@ public class DifferControllerTests {
 
 	/**
 	 * Check the behavior when the data is not equals
+	 * 
 	 * @throws Exception
 	 */
 	@Test
@@ -218,7 +199,33 @@ public class DifferControllerTests {
 	}
 
 	/**
+	 * Checks the behaviour of the response when data is the same
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void equals() throws Exception {
+		String leftData = "QUFBQkJC"; // AAAAAA
+		String rightData = "QUFBQkJC"; // AAAAAA
+
+		DifferBean differBeanLeft = new DifferBean(leftData);
+		DifferBean differBeanRight = new DifferBean(rightData);
+
+		this.mockMvc
+				.perform(post(INSERTLEFT).contentType(MediaType.APPLICATION_JSON).content(asJsonString(differBeanLeft)))
+				.andDo(print()).andExpect(status().isCreated());
+
+		this.mockMvc.perform(
+				post(INSERTRIGHT).contentType(MediaType.APPLICATION_JSON).content(asJsonString(differBeanRight)))
+				.andDo(print()).andExpect(status().isCreated());
+
+		this.mockMvc.perform(get(COMPARE)).andDo(print()).andExpect(jsonPath("$.equals", is(true)))
+				.andExpect(jsonPath("$.sameSize", is(true))).andExpect(status().isOk());
+	}
+
+	/**
 	 * Check behavior of retrieveAll method
+	 * 
 	 * @throws Exception
 	 */
 	@Test

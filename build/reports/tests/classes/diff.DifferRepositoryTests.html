@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.045s</div>
+<div class="counter">0.042s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,12 +79,12 @@
 </thead>
 <tr>
 <td class="success">findById</td>
-<td>0.030s</td>
+<td>0.032s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">notFindById</td>
-<td>0.015s</td>
+<td>0.010s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -92,12 +92,12 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2017-12-23 22:09:39.726  INFO 13156 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [diff.DifferRepositoryTests], using SpringBootContextLoader
-2017-12-23 22:09:39.727  INFO 13156 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [diff.DifferRepositoryTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-2017-12-23 22:09:39.727  INFO 13156 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [diff.DifferRepositoryTests]: DifferRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2017-12-23 22:09:39.731  INFO 13156 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration diff.Application for test class diff.DifferRepositoryTests
-2017-12-23 22:09:39.737  INFO 13156 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2017-12-23 22:09:39.741  INFO 13156 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3535bff3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@13ef61f0, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@71d132e9, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4cc83125, org.springframework.test.context.transaction.TransactionalTestExecutionListener@549ac568, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3c92ceea, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@44ace5eb, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4960a542, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4b539883, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@619cfa9d, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42bcd8f8, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@eba2f58]
+<pre>2017-12-23 22:44:38.190  INFO 2200 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [diff.DifferRepositoryTests], using SpringBootContextLoader
+2017-12-23 22:44:38.191  INFO 2200 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [diff.DifferRepositoryTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2017-12-23 22:44:38.191  INFO 2200 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [diff.DifferRepositoryTests]: DifferRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2017-12-23 22:44:38.197  INFO 2200 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration diff.Application for test class diff.DifferRepositoryTests
+2017-12-23 22:44:38.202  INFO 2200 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-23 22:44:38.207  INFO 2200 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4a0b9578, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@66ac0643, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4bef8001, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1021ea1, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1734ebac, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@112c7917, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@26f41cbb, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3712f9d2, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@74b1d17, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@75dd3828, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@734ae3ec, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5336483e]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -107,35 +107,35 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v1.5.9.RELEASE)
 
-2017-12-23 22:09:39.862  INFO 13156 --- [    Test worker] diff.DifferRepositoryTests               : Starting DifferRepositoryTests on CPX-DH5WBKGGJUF with PID 13156 (started by paulo.almeida.junior in C:\Users\paulo.almeida.junior\Documents\workspace-sts-3.9.1.RELEASE\diff-exam)
-2017-12-23 22:09:39.863  INFO 13156 --- [    Test worker] diff.DifferRepositoryTests               : No active profile set, falling back to default profiles: default
-2017-12-23 22:09:39.867  INFO 13156 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7734e67: startup date [Sat Dec 23 22:09:39 BRST 2017]; root of context hierarchy
-2017-12-23 22:09:40.624  INFO 13156 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7177eb07] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2017-12-23 22:09:40.874  INFO 13156 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
-2017-12-23 22:09:40.874  INFO 13156 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2017-12-23 22:44:38.298  INFO 2200 --- [    Test worker] diff.DifferRepositoryTests               : Starting DifferRepositoryTests on CPX-DH5WBKGGJUF with PID 2200 (started by paulo.almeida.junior in C:\Users\paulo.almeida.junior\Documents\workspace-sts-3.9.1.RELEASE\diff-exam)
+2017-12-23 22:44:38.298  INFO 2200 --- [    Test worker] diff.DifferRepositoryTests               : No active profile set, falling back to default profiles: default
+2017-12-23 22:44:38.301  INFO 2200 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7abdd2f4: startup date [Sat Dec 23 22:44:38 BRST 2017]; root of context hierarchy
+2017-12-23 22:44:39.073  INFO 2200 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9b9b89f0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-23 22:44:39.361  INFO 2200 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-12-23 22:44:39.361  INFO 2200 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2017-12-23 22:09:40.881  INFO 13156 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2017-12-23 22:09:40.906  INFO 13156 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
-2017-12-23 22:09:40.914  WARN 13156 --- [    Test worker] o.h.j.i.EntityManagerFactoryRegistry     : HHH000436: Entity manager factory name (default) is already registered.  If entity manager will be clustered or passivated, specify a unique value for property 'hibernate.ejb.entitymanager_factory_name'
-2017-12-23 22:09:40.914  INFO 13156 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2017-12-23 22:09:41.294  INFO 13156 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/v1/diff/{id}],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;diff.domain.DifferResponse&gt; diff.controller.DifferController.compare(java.lang.String) throws java.lang.Exception
-2017-12-23 22:09:41.295  INFO 13156 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/v1/diff/{id}/{side}],methods=[POST],consumes=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;diff.domain.DifferObject&gt; diff.controller.DifferController.defineData(java.lang.String,java.lang.String,diff.domain.DifferBean)
-2017-12-23 22:09:41.295  INFO 13156 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/v1/diff/retrieveAll],methods=[GET]}&quot; onto public java.util.List&lt;diff.domain.DifferObject&gt; diff.controller.DifferController.retrieveAll()
-2017-12-23 22:09:41.297  INFO 13156 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/swagger-resources]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.List&lt;springfox.documentation.swagger.web.SwaggerResource&gt;&gt; springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
-2017-12-23 22:09:41.297  INFO 13156 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/swagger-resources/configuration/ui]}&quot; onto public org.springframework.http.ResponseEntity&lt;springfox.documentation.swagger.web.UiConfiguration&gt; springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
-2017-12-23 22:09:41.298  INFO 13156 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/swagger-resources/configuration/security]}&quot; onto public org.springframework.http.ResponseEntity&lt;springfox.documentation.swagger.web.SecurityConfiguration&gt; springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
-2017-12-23 22:09:41.427  INFO 13156 --- [    Test worker] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity&lt;springfox.documentation.spring.web.json.Json&gt; springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2017-12-23 22:09:41.624  INFO 13156 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@7734e67: startup date [Sat Dec 23 22:09:39 BRST 2017]; root of context hierarchy
-2017-12-23 22:09:41.658  INFO 13156 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2017-12-23 22:09:41.658  INFO 13156 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2017-12-23 22:09:41.697  INFO 13156 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2017-12-23 22:09:41.955  INFO 13156 --- [    Test worker] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
-2017-12-23 22:09:41.955  INFO 13156 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2017-12-23 22:09:41.957  INFO 13156 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2017-12-23 22:09:41.964  INFO 13156 --- [    Test worker] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2017-12-23 22:09:42.005  INFO 13156 --- [    Test worker] diff.DifferRepositoryTests               : Started DifferRepositoryTests in 2.256 seconds (JVM running for 12.06)
-2017-12-23 22:09:42.019  INFO 13156 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-12-23 22:44:39.370  INFO 2200 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-12-23 22:44:39.390  INFO 2200 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-12-23 22:44:39.398  WARN 2200 --- [    Test worker] o.h.j.i.EntityManagerFactoryRegistry     : HHH000436: Entity manager factory name (default) is already registered.  If entity manager will be clustered or passivated, specify a unique value for property 'hibernate.ejb.entitymanager_factory_name'
+2017-12-23 22:44:39.398  INFO 2200 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-12-23 22:44:39.767  INFO 2200 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/v1/diff/{id}],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;diff.domain.DifferResponse&gt; diff.controller.DifferController.compare(java.lang.String) throws java.lang.Exception
+2017-12-23 22:44:39.767  INFO 2200 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/v1/diff/retrieveAll],methods=[GET]}&quot; onto public java.util.List&lt;diff.domain.DifferObject&gt; diff.controller.DifferController.retrieveAll()
+2017-12-23 22:44:39.768  INFO 2200 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/v1/diff/{id}/{side}],methods=[POST],consumes=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;diff.domain.DifferObject&gt; diff.controller.DifferController.defineData(java.lang.String,java.lang.String,diff.domain.DifferBean)
+2017-12-23 22:44:39.770  INFO 2200 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/swagger-resources/configuration/security]}&quot; onto public org.springframework.http.ResponseEntity&lt;springfox.documentation.swagger.web.SecurityConfiguration&gt; springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2017-12-23 22:44:39.771  INFO 2200 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/swagger-resources/configuration/ui]}&quot; onto public org.springframework.http.ResponseEntity&lt;springfox.documentation.swagger.web.UiConfiguration&gt; springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2017-12-23 22:44:39.772  INFO 2200 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/swagger-resources]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.List&lt;springfox.documentation.swagger.web.SwaggerResource&gt;&gt; springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2017-12-23 22:44:39.889  INFO 2200 --- [    Test worker] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity&lt;springfox.documentation.spring.web.json.Json&gt; springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2017-12-23 22:44:40.148  INFO 2200 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@7abdd2f4: startup date [Sat Dec 23 22:44:38 BRST 2017]; root of context hierarchy
+2017-12-23 22:44:40.190  INFO 2200 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-23 22:44:40.190  INFO 2200 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-23 22:44:40.236  INFO 2200 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-23 22:44:40.496  INFO 2200 --- [    Test worker] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2017-12-23 22:44:40.497  INFO 2200 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2017-12-23 22:44:40.498  INFO 2200 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2017-12-23 22:44:40.505  INFO 2200 --- [    Test worker] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2017-12-23 22:44:40.566  INFO 2200 --- [    Test worker] diff.DifferRepositoryTests               : Started DifferRepositoryTests in 2.35 seconds (JVM running for 13.566)
+2017-12-23 22:44:40.589  INFO 2200 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
 </pre>
 </span>
 </div>
@@ -147,7 +147,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 2.13</a> at Dec 23, 2017 10:09:42 PM</p>
+<a href="http://www.gradle.org">Gradle 2.13</a> at Dec 23, 2017 10:44:41 PM</p>
 </div>
 </div>
 </body>
