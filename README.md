@@ -2,18 +2,20 @@
 
 
 
+#### Download / Clone Repository
+Download the ZIP file of this repository or clone it.
+If you decided to download the ZIP file, unzip it and access the project folder.
+If you decided to clone it, access the project folder after performing the clone.
+
 #### Start the Application
-Download the zip or clone the repository
-
-Run the command: java -jar build/libs/diff-0.1.0.jar at the project or zip root folder
-
-######Access the Rest API via to look for the methods and how to use it.
+To start the application via java command line, execute the following command at the root level of the project folder `java -jar build/libs/diff-0.1.0.jar`.
+To start the application via Spring Boot, execute the command `gradlew bootRun`.
 
 #### API
 1. Set Data at Right Position
->**POST**:  [http://localhost:8080/v1/diff/{ID}/right](http://localhost:8080/v1/diff/{ID}/right)
+>**POST**:  [http://localhost:8080/v1/diff/{ID}/right] (http://localhost:8080/v1/diff/{ID}/right)
 2. Set Data at Left Position
->**POST**:  [http://localhost:8080/v1/diff/{ID}/left](http://localhost:8080/v1/diff/{ID}/left)
+>**POST**:  [http://localhost:8080/v1/diff/{ID}/left] (http://localhost:8080/v1/diff/{ID}/left)
 3. Compare Data
 >**GET**:   http://localhost:8080/v1/diff/{ID}
 4. Retrieve All
@@ -21,7 +23,7 @@ Run the command: java -jar build/libs/diff-0.1.0.jar at the project or zip root 
 
 #### API Documentation
 REST API [Documentation] (http://localhost:8080/swagger-ui.html)
-###### To access the documentation the application should be running.
+###### To access this API Documentation the application should be running.
 
 #### Used Technologies
 1. Java 8
@@ -30,8 +32,8 @@ REST API [Documentation] (http://localhost:8080/swagger-ui.html)
 4. Swagger
 
 #### Build the Application
-Perform the command `gradlew build` to start the build process
-###### This should be performed at the project root folder.
+If any change has been done in the application, execute the command `gradlew build` to perform the build process
+###### Note: This should be performed at the project root folder.
 
 
 
