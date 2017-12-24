@@ -22,12 +22,13 @@ To start the application via Spring Boot, execute the command `gradlew bootRun`.
 >**GET**:   http://localhost:8080/v1/diff/retrieveAll
 
 #### API Samples
-In the root folder there are two files (sample_left.json and sample_right.json) that can be used to perform a request to the application
-*Get Sample
->** curl -X GET -H "Content-Type: application/json"  http://localhost:8080/v1/diff/1
+In the root folder there are two files (sample_left.json and sample_right.json) that can be used to perform a request to the application.
+
+**Get Sample**
+>curl -X GET -H "Content-Type: application/json"  http://localhost:8080/v1/diff/1
 
 *Retrieve Sample
-curl -X GET -H "Content-Type: application/json"  http://localhost:8080/v1/diff/1
+>curl -X GET -H "Content-Type: application/json"  http://localhost:8080/v1/diff/retrieveAll
 
 #### API Documentation
 REST API [Documentation] (http://localhost:8080/swagger-ui.html)
