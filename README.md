@@ -29,7 +29,7 @@ This section has two samples ids that can be used to perform a request to the ap
 
 #### Set Right Data
 >curl -H "Content-Type: application/json" -X POST -d "{\"data\":\"QUFBQQ==\"}" http://localhost:8080/v1/diff/1/right
-```
+
 #### Set Left Data
 >curl -H "Content-Type: application/json" -X POST -d "{\"data\":\"QUFBQQ==\"}" http://localhost:8080/v1/diff/1/left
 
