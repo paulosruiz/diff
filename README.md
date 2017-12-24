@@ -68,6 +68,9 @@ REST API [Documentation](http://localhost:8080/swagger-ui.html)
 If any change has been done in the application, execute the command `gradlew build` to perform the build process
 ##### Note: This should be performed at the project root folder.
 
+## Test Results
+The test results page is stored under /diff/build/reports/test/index.html from the project root folder. 
+
 ## Improvements Done
 1. Included a retrieveAll endpoint that lists the existings Ids and data that were saved in the application.
 2. Included a property status in the response, to allow an easier validation of the compare response.

@@ -1,140 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="diff.DifferServiceTests" tests="12" skipped="0" failures="0" errors="0" timestamp="2017-12-24T03:43:27" hostname="CPX-DH5WBKGGJUF" time="0.312">
+<testsuite name="diff.DifferServiceTests" tests="12" skipped="0" failures="0" errors="0" timestamp="2017-12-24T04:00:43" hostname="CPX-DH5WBKGGJUF" time="0.304">
   <properties/>
   <testcase name="notSameSize" classname="diff.DifferServiceTests" time="0.084"/>
-  <testcase name="sameSizeNotEquals" classname="diff.DifferServiceTests" time="0.036"/>
-  <testcase name="retreiveAll" classname="diff.DifferServiceTests" time="0.024"/>
-  <testcase name="reverseDifference" classname="diff.DifferServiceTests" time="0.02"/>
-  <testcase name="missingRight" classname="diff.DifferServiceTests" time="0.016"/>
-  <testcase name="Base64Decode" classname="diff.DifferServiceTests" time="0.02"/>
-  <testcase name="sameSizeAndEqual" classname="diff.DifferServiceTests" time="0.02"/>
-  <testcase name="firstAndLastDifferences" classname="diff.DifferServiceTests" time="0.02"/>
+  <testcase name="sameSizeNotEquals" classname="diff.DifferServiceTests" time="0.032"/>
+  <testcase name="retreiveAll" classname="diff.DifferServiceTests" time="0.016"/>
+  <testcase name="reverseDifference" classname="diff.DifferServiceTests" time="0.016"/>
+  <testcase name="missingRight" classname="diff.DifferServiceTests" time="0.012"/>
+  <testcase name="Base64Decode" classname="diff.DifferServiceTests" time="0.024"/>
+  <testcase name="sameSizeAndEqual" classname="diff.DifferServiceTests" time="0.016"/>
+  <testcase name="firstAndLastDifferences" classname="diff.DifferServiceTests" time="0.016"/>
   <testcase name="middleDifference" classname="diff.DifferServiceTests" time="0.02"/>
-  <testcase name="missingLeft" classname="diff.DifferServiceTests" time="0.016"/>
-  <testcase name="notFound" classname="diff.DifferServiceTests" time="0.012"/>
-  <testcase name="sufixDifference" classname="diff.DifferServiceTests" time="0.02"/>
-  <system-out><![CDATA[2017-12-24 01:43:27.219  INFO 4204 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [diff.DifferServiceTests], using SpringBootContextLoader
-2017-12-24 01:43:27.219  INFO 4204 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [diff.DifferServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-2017-12-24 01:43:27.219  INFO 4204 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [diff.DifferServiceTests]: DifferServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2017-12-24 01:43:27.227  INFO 4204 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration diff.Application for test class diff.DifferServiceTests
-2017-12-24 01:43:27.227  INFO 4204 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2017-12-24 01:43:27.231  INFO 4204 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7b7a4ba8, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2a64ffb7, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4c67ffdc, org.springframework.test.context.support.DirtiesContextTestExecutionListener@61dd68cf, org.springframework.test.context.transaction.TransactionalTestExecutionListener@48535857, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@45c78fad, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@36ad01d6, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3c3c9cdc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6e7ffaec, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@17bcaa69, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@49c1baf9, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@11430561]
-2017-12-24 01:43:27.239  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.239  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.243  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.247  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.247  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.251  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.251  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.251  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
-2017-12-24 01:43:27.251  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
-2017-12-24 01:43:27.251  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
-2017-12-24 01:43:27.251  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QkFBQg==, right=QUFBQUFB]
+  <testcase name="missingLeft" classname="diff.DifferServiceTests" time="0.012"/>
+  <testcase name="notFound" classname="diff.DifferServiceTests" time="0.016"/>
+  <testcase name="sufixDifference" classname="diff.DifferServiceTests" time="0.028"/>
+  <system-out><![CDATA[2017-12-24 02:00:43.698  INFO 13104 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [diff.DifferServiceTests], using SpringBootContextLoader
+2017-12-24 02:00:43.698  INFO 13104 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [diff.DifferServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2017-12-24 02:00:43.698  INFO 13104 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [diff.DifferServiceTests]: DifferServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2017-12-24 02:00:43.702  INFO 13104 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration diff.Application for test class diff.DifferServiceTests
+2017-12-24 02:00:43.706  INFO 13104 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-24 02:00:43.710  INFO 13104 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7b7a4ba8, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2a64ffb7, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4c67ffdc, org.springframework.test.context.support.DirtiesContextTestExecutionListener@61dd68cf, org.springframework.test.context.transaction.TransactionalTestExecutionListener@48535857, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@45c78fad, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@36ad01d6, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3c3c9cdc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6e7ffaec, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@17bcaa69, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@49c1baf9, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@11430561]
+2017-12-24 02:00:43.714  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.714  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.718  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:43.722  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.722  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.726  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:43.726  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.730  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
+2017-12-24 02:00:43.730  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
+2017-12-24 02:00:43.730  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
+2017-12-24 02:00:43.730  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QkFBQg==, right=QUFBQUFB]
 diff.domain.DifferResponse@16327f30
-2017-12-24 01:43:27.323  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.323  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.327  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.331  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.331  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.335  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.335  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.335  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
-2017-12-24 01:43:27.335  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
-2017-12-24 01:43:27.335  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
-2017-12-24 01:43:27.335  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QUFBQUFB, right=QUFBQkJC]
-2017-12-24 01:43:27.335  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting checkOffsets method
-2017-12-24 01:43:27.363  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.363  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.367  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.371  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : getAll method started
-2017-12-24 01:43:27.383  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.383  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.383  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.387  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.387  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.391  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.391  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.395  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
-2017-12-24 01:43:27.395  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
-2017-12-24 01:43:27.395  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
-2017-12-24 01:43:27.395  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QUFCQg==, right=QkJBQQ==]
-2017-12-24 01:43:27.395  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting checkOffsets method
-2017-12-24 01:43:27.399  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.399  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.403  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.407  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.407  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.411  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
-2017-12-24 01:43:27.411  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
-2017-12-24 01:43:27.419  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.419  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.419  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.423  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.423  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.427  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.427  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.431  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
-2017-12-24 01:43:27.431  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
-2017-12-24 01:43:27.431  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
-2017-12-24 01:43:27.431 ERROR 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Error Base64 could not be decoded
-2017-12-24 01:43:27.439  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.439  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.443  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.447  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.447  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.451  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.451  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.455  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
-2017-12-24 01:43:27.455  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
-2017-12-24 01:43:27.455  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
-2017-12-24 01:43:27.455  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QUFBQUFB, right=QUFBQUFB]
+2017-12-24 02:00:43.798  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.802  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.802  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:43.806  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.806  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.810  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:43.810  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.810  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
+2017-12-24 02:00:43.810  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
+2017-12-24 02:00:43.810  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
+2017-12-24 02:00:43.810  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QUFBQUFB, right=QUFBQkJC]
+2017-12-24 02:00:43.810  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting checkOffsets method
+2017-12-24 02:00:43.834  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.834  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.838  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:43.842  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : getAll method started
+2017-12-24 02:00:43.850  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.854  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.854  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:43.858  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.858  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.862  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:43.862  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.862  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
+2017-12-24 02:00:43.862  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
+2017-12-24 02:00:43.862  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
+2017-12-24 02:00:43.862  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QUFCQg==, right=QkJBQQ==]
+2017-12-24 02:00:43.862  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting checkOffsets method
+2017-12-24 02:00:43.870  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.870  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.874  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:43.878  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:43.878  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.878  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
+2017-12-24 02:00:43.878  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
+2017-12-24 02:00:43.886  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.886  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.890  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:43.894  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.894  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.898  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:43.898  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.902  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
+2017-12-24 02:00:43.902  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
+2017-12-24 02:00:43.902  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
+2017-12-24 02:00:43.902 ERROR 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Error Base64 could not be decoded
+2017-12-24 02:00:43.910  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.910  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.914  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:43.914  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.914  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.918  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:43.918  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.922  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
+2017-12-24 02:00:43.922  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
+2017-12-24 02:00:43.922  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
+2017-12-24 02:00:43.922  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QUFBQUFB, right=QUFBQUFB]
 diff.domain.DifferResponse@78d582c7
-2017-12-24 01:43:27.463  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.463  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.463  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.467  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.467  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.471  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.475  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.475  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
-2017-12-24 01:43:27.475  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
-2017-12-24 01:43:27.475  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
-2017-12-24 01:43:27.475  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QkFBQg==, right=QUFBQQ==]
-2017-12-24 01:43:27.475  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting checkOffsets method
-2017-12-24 01:43:27.483  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.483  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.483  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.487  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.487  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.491  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.491  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.495  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
-2017-12-24 01:43:27.495  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
-2017-12-24 01:43:27.495  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
-2017-12-24 01:43:27.495  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QkFBQg==, right=QkJCQg==]
-2017-12-24 01:43:27.495  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting checkOffsets method
-2017-12-24 01:43:27.503  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.503  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.503  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.507  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.507  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.507  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
-2017-12-24 01:43:27.507  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
-2017-12-24 01:43:27.507  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
-2017-12-24 01:43:27.519  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.519  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.527  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.527  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.531  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
-2017-12-24 01:43:27.535  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
-2017-12-24 01:43:27.535  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.539  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
-2017-12-24 01:43:27.539  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
-2017-12-24 01:43:27.539  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
-2017-12-24 01:43:27.539  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
-2017-12-24 01:43:27.539  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
-2017-12-24 01:43:27.539  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QUJCQg==, right=QUFBQQ==]
-2017-12-24 01:43:27.539  INFO 4204 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting checkOffsets method
+2017-12-24 02:00:43.930  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.930  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.930  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:43.934  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.934  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.938  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:43.938  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.938  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
+2017-12-24 02:00:43.938  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
+2017-12-24 02:00:43.938  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
+2017-12-24 02:00:43.938  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QkFBQg==, right=QUFBQQ==]
+2017-12-24 02:00:43.938  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting checkOffsets method
+2017-12-24 02:00:43.946  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.946  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.946  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:43.950  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.950  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.954  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:43.954  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.954  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
+2017-12-24 02:00:43.954  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
+2017-12-24 02:00:43.954  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
+2017-12-24 02:00:43.954  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QkFBQg==, right=QkJCQg==]
+2017-12-24 02:00:43.954  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting checkOffsets method
+2017-12-24 02:00:43.962  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.962  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.966  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:43.966  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:43.966  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.970  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
+2017-12-24 02:00:43.970  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
+2017-12-24 02:00:43.970  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
+2017-12-24 02:00:43.978  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:43.978  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.994  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:43.994  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:43.994  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting createDiffer method
+2017-12-24 02:00:44.002  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting defineData method
+2017-12-24 02:00:44.002  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:44.010  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting comparing method
+2017-12-24 02:00:44.010  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting getDiffer method
+2017-12-24 02:00:44.010  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompare method
+2017-12-24 02:00:44.010  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareRight method
+2017-12-24 02:00:44.010  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting validateToCompareLeft method
+2017-12-24 02:00:44.010  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Comparing: DifferObject [id=diff.DifferServiceTests, left=QUJCQg==, right=QUFBQQ==]
+2017-12-24 02:00:44.010  INFO 13104 --- [    Test worker] diff.services.impl.DifferServiceImpl     : Starting checkOffsets method
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

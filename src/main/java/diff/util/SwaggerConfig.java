@@ -21,7 +21,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("diff.controller"))
+				.apis(RequestHandlerSelectors.basePackage("diff.controllers"))
 				.paths(regex("/v1/diff.*")).build();
 	}
 
