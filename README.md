@@ -1,10 +1,6 @@
 # diff
 
-###### Used Technologies
-1. Java 8
-2. Spring Boot
-3. H2 Database 
-4. Swagger
+
 
 #### Start the Application
 Download the zip or clone the repository
@@ -14,21 +10,24 @@ Run the command: java -jar build/libs/diff-0.1.0.jar at the project or zip root 
 ######Access the Rest API via to look for the methods and how to use it.
 
 #### API
-1. Set Data
-	1. Right Position
+1. Set Data at Right Position
 >**POST**:  http://localhost:8080/v1/diff/{ID}/right
-	1. Left Position
+2. Set Data at Left Position
 >**POST**:  http://localhost:8080/v1/diff/{ID}/left
-
-2. Compare
+3. Compare Data
 >**GET**:   http://localhost:8080/v1/diff/{ID}
-
-3. Retrieve All
+4. Retrieve All
 >**GET**:   http://localhost:8080/v1/diff/retrieveAll
 
 #### API Documentation
 REST API [Documentation] (http://localhost:8080/swagger-ui.html)
 ###### To access the documentation the application should be running.
+
+#### Used Technologies
+1. Java 8
+2. Spring Boot
+3. H2 Database 
+4. Swagger
 
 #### Build the Application
 Perform the command `gradlew build` to start the build process
