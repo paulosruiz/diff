@@ -218,7 +218,7 @@ public class DifferControllerTests {
 	}
 
 	/**
-	 * 
+	 * Check behavior of retrieveAll method
 	 * @throws Exception
 	 */
 	@Test
