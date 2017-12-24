@@ -6,10 +6,12 @@ An application that provides two endpoints that receives Base64 encoded data and
 ## Download / Clone Repository
 Download the ZIP file of this repository or clone it.
 If you decided to download the ZIP file, unzip it and access the project folder.
+
 If you decided to clone it, access the project folder after performing the clone.
 
 ## Start the Application
-To start the application via command line, execute the command `java -jar build/libs/diff-0.1.0.jar` at root level of the project folder .
+To start the application via command line, execute the command `java -jar build/libs/diff-0.1.0.jar` at root level of the project folder.
+
 To start the application via Spring Boot, execute the command `gradlew bootRun`.
 
 ## API Endpoints
@@ -69,7 +71,7 @@ If any change has been done in the application, execute the command `gradlew bui
 ##### Note: This should be performed at the project root folder.
 
 ## Test Results
-The test results page is stored under /diff/build/reports/test/index.html from the project root folder. 
+The test results page is stored under `build/reports/test/index.html` from the project root folder. 
 
 ## Improvements Done
 1. Included a retrieveAll endpoint that lists the existings Ids and data that were saved in the application.
