@@ -11,13 +11,13 @@ Download the zip or clone the repository
 
 Run the command: java -jar build/libs/diff-0.1.0.jar at the project or zip root folder
 
-Access the Rest API via to look for the methods and how to use it.
-###### Note: The mongobd 3.6 should be running at localhost:27017
+######Access the Rest API via to look for the methods and how to use it.
 
 #### API
-1. Define Data
+1. Set Data
+	1. Right Position
 >**POST**:  http://localhost:8080/v1/diff/{ID}/right
-
+	1. Left Position
 >**POST**:  http://localhost:8080/v1/diff/{ID}/left
 
 2. Compare
