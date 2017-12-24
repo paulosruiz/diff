@@ -13,13 +13,21 @@ To start the application via command line, execute the command `java -jar build/
 To start the application via Spring Boot, execute the command `gradlew bootRun`.
 
 #### API Endpoints
->**POST**:  http://localhost:8080/v1/diff/{ID}/right
->**POST**:  http://localhost:8080/v1/diff/{ID}/left
->**GET**:   http://localhost:8080/v1/diff/{ID}]
+>**POST**:  http://localhost:8080/v1/diff/{id}/right
+
+>**POST**:  http://localhost:8080/v1/diff/{id}/left
+
+>**GET**:   http://localhost:8080/v1/diff/{id}
+
 >**GET**:   http://localhost:8080/v1/diff/retrieveAll
 
 #### API Samples
 In the root folder there are two files (sample_left.json and sample_right.json) that can be used to perform a request to the application
+*Get Sample
+>** curl -X GET -H "Content-Type: application/json"  http://localhost:8080/v1/diff/1
+
+*Retrieve Sample
+curl -X GET -H "Content-Type: application/json"  http://localhost:8080/v1/diff/1
 
 #### API Documentation
 REST API [Documentation] (http://localhost:8080/swagger-ui.html)
@@ -30,8 +38,7 @@ REST API [Documentation] (http://localhost:8080/swagger-ui.html)
 2. Spring Boot
 3. H2 Database
 4. Junit 
-5. 
-4. Swagger
+5. Swagger
 
 #### Build the Application
 If any change has been done in the application, execute the command `gradlew build` to perform the build process
@@ -44,16 +51,18 @@ If any change has been done in the application, execute the command `gradlew bui
 ###### Next Steps
 1. Add a security restriction on retrieveAll endpoint
 
-Revisar strings das classes de teste
 
 TODO SWAGGER
 	incluir documentação no readMe
 	
+
+Feitos:
+Revisar strings das classes de teste
 Declarar no Readme:
 Included a property status in the response
 Included a delete service
 
-Feitos:
+
 TODO TESTS
 	Documentação
 	Service Testado

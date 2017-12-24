@@ -101,7 +101,6 @@ public class DifferControllerTests {
 		this.mockMvc.perform(post(INSERTLEFT).contentType(MediaType.APPLICATION_JSON).content(asJsonString(differBean)))
 				// .param("data", leftData))
 				.andDo(print()).andExpect(status().isCreated());
-
 	}
 
 	/**
@@ -111,7 +110,6 @@ public class DifferControllerTests {
 	 */
 	@Test
 	public void insertRightData() throws Exception {
-
 		// String rightData = "QUFBQkJC"; // AAAAAA
 
 		final String right = "AAAAAA"; // AAAAAA
