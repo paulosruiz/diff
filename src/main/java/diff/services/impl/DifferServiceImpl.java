@@ -40,7 +40,7 @@ public class DifferServiceImpl implements DifferService {
 				newDiff = repository.findById(id);
 
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			LOG.error("Differ not found", e);
 		}
 
@@ -59,7 +59,7 @@ public class DifferServiceImpl implements DifferService {
 				LOG.debug(newDiff.toString());
 			}
 
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			LOG.error("Error during createDiffer", e);
 		}
 		return newDiff;
@@ -74,17 +74,20 @@ public class DifferServiceImpl implements DifferService {
 			LOG.debug("Id: " + id.toString());
 			LOG.debug("Data: " + data);
 			LOG.debug("Side: " + side.name());
-
-			differ = this.getDiffer(id);
-			if (differ == null) {
-				differ = this.createDiffer(id);
+			try {
+				differ = this.getDiffer(id);
+				if (differ == null) {
+					differ = this.createDiffer(id);
+				}
+				if (side.equals(DifferSide.LEFT)) {
+					differ.setLeft(data);
+				} else {
+					differ.setRight(data);
+				}
+				repository.save(differ);
+			} catch (final NullPointerException e) {
+				LOG.error("Nullpointer when definedData");
 			}
-			if (side.equals(DifferSide.LEFT)) {
-				differ.setLeft(data);
-			} else {
-				differ.setRight(data);
-			}
-			repository.save(differ);
 		}
 
 		return differ;
@@ -151,10 +154,11 @@ public class DifferServiceImpl implements DifferService {
 	 * @return
 	 * 
 	 */
+	@Override
 	public DifferResponse compare(final String id) {
 		LOG.info("Starting comparing method");
 
-		DifferResponse response = new DifferResponse();
+		final DifferResponse response = new DifferResponse();
 		response.setId(id);
 		DifferObject differToCompare = null;
 		byte[] leftDecoded;
@@ -170,7 +174,7 @@ public class DifferServiceImpl implements DifferService {
 			try {
 				leftDecoded = Base64.getDecoder().decode(differToCompare.getLeft());
 				rightDecode = Base64.getDecoder().decode(differToCompare.getRight());
-			} catch (IllegalArgumentException e) {
+			} catch (final IllegalArgumentException e) {
 				LOG.error("Error Base64 could not be decoded");
 				response.setStatus(DifferResponseStatus.BASE64_ERROR.value());
 				return response;
@@ -179,7 +183,7 @@ public class DifferServiceImpl implements DifferService {
 			LOG.info("Comparing: " + differToCompare.toString());
 			LOG.debug("Right Size: " + rightDecode.length);
 			LOG.debug("Left Size: " + leftDecoded.length);
-			
+
 			compare(response, leftDecoded, rightDecode);
 		}
 
@@ -216,7 +220,7 @@ public class DifferServiceImpl implements DifferService {
 				response.setStatus(DifferResponseStatus.CONTENT_MISMATCH.value());
 
 				// verify the differences
-				List<Offset> offsets = checkOffsets(leftDecoded, rightDecode);
+				final List<Offset> offsets = checkOffsets(leftDecoded, rightDecode);
 				response.setOffsets(offsets);
 			}
 		}
@@ -224,7 +228,7 @@ public class DifferServiceImpl implements DifferService {
 
 	private List<Offset> checkOffsets(final byte[] leftDecoded, final byte[] rightDecode) {
 		LOG.info("Starting checkOffsets method");
-		List<Offset> listOffsets = new ArrayList<Offset>();
+		final List<Offset> listOffsets = new ArrayList<Offset>();
 		int offset = -1;
 		int length = 0;
 		int i = 0;
